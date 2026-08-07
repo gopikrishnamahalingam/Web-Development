@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* Navigation Bar */
+div.aboveNav{
+    display: flex;
+    gap: 5px;
+    width: 70vw;
+}
+div.aboveNav > div.Underline:hover{
+    text-decoration: underline;
+}
