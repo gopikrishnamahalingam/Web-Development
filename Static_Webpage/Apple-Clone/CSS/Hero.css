@@ -4,6 +4,8 @@
     --color3: rgb(255, 255, 255);
     --color4: rgb(250,250,250);
     --color5: rgb(26, 124, 222);
+    --color6: rgb(211, 233, 242)
+
 }
 
 /* Hero Section */
@@ -17,25 +19,27 @@ div.iphone{
     /* justify-content: center; */
     align-items: center;
 }
-div.iphone > div{
+div.product > div{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 34vh;
     width: 100vw;
 }
-div.iphoneTitle{
+div.iphone > div{
+    height: 34vh;
+}
+div.ProductTitle{
     font-size: 8vh;
     font-weight: bold;
     /* padding-top: 2vh; */
 
 }
-div.belowIphoneTitle{
+div.belowProductTitle{
     font-size: 3vh;
     font-weight: lighter;
 }
-div.shopIphone{
+div.shopProduct{
     display: flex;
     gap: 12px;
     margin: 2vh;
@@ -65,6 +69,19 @@ div.iphone img{
     
     width: 55vw;
 }
+
+div.separator{
+    height: 1vh;
+    background-color: var(--color3);
+}
+div.macbook > div{
+    height: 35vh;
+    background-color: var(--color6);
+}
+.macbook img{
+    width: 100vw;
+}
+
 /* Media Queries */
 
 @media screen and (width < 1200px) {
@@ -75,10 +92,10 @@ div.iphone img{
 }
 
 @media screen and (width < 1000px) {
-    div.iphoneTitle{
+    div.ProductTitle{
         font-size: 7.5vh;
     }
-    div.belowIphoneTitle{
+    div.belowProductTitle{
         font-size: 2.8vh;
     }
     div.iphone img{
@@ -95,10 +112,10 @@ div.iphone img{
 }
 
 @media screen and (width < 700px) {
-    div.iphoneTitle{
+    div.ProductTitle{
         font-size: 7vh;
     }
-    div.belowIphoneTitle{
+    div.belowProductTitle{
         font-size: 2.6vh;
     }
 
@@ -115,15 +132,15 @@ div.iphone img{
 
 }
 @media screen and (width < 500px) {
-    div.iphoneTitle{
+    div.ProductTitle{
         font-size: 5vh;
     }
-    div.belowIphoneTitle{
+    div.belowProductTitle{
         font-size: 2vh;
     }
     .LearnMore{
         text-align: center;
-        font-size: smaller;
+        font-size: xx-small;
     }
     .shop{
         text-align: center;
@@ -131,7 +148,9 @@ div.iphone img{
     }
 }
 @media screen and (width < 360) {
-    div.shopIphone{
+    div.shopProduct{
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
