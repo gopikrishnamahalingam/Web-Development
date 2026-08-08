@@ -5,12 +5,14 @@
 
 :root {
     --color1: rgb(236, 234, 234);
-    --color2: rgb(250, 250, 250);
+    --color2:  rgb(246, 245, 245);
     --color3: rgb(255, 255, 255);
+    --color4: rgb(250,250,250);
 }
 
 /* Navigation Bar */
 /* Above */
+
 div.aboveNav {
     display: flex;
     gap: 5px;
@@ -29,7 +31,7 @@ div.aboveNav>div.Underline:hover {
 
 /* Nav Bar */
 div.navBarBG {
-    background-color: var(--color2);
+    background-color: var(--color4);
 }
 
 div.navBar {
@@ -51,12 +53,14 @@ div.navBar>div {
     font-weight: 100;
     cursor: pointer;
 }
+
 div.navBar > div.images{
     display: flex;
     gap: 3vw;
     justify-content: space-evenly;
     cursor: pointer;
 }
+
 div.navBar .Search {
     height: 2vh;
 }
@@ -72,7 +76,7 @@ div.navBar .DropDown {
 
 }
 
-/* Below */
+/* Below nav */
 div.belowNav {
     text-align: center;
     font-size: 0.94rem;
@@ -87,9 +91,7 @@ div.belowNav .Shop:hover {
     text-decoration: underline;
 }
 
-/* Hero Section */
-
-
+/* Media Queries */
 @media screen and (width < 1000px) {
     /* Above Nav */
     div.aboveNav{
@@ -109,9 +111,10 @@ div.belowNav .Shop:hover {
         display: none;
     }
     div.navBar  .DropDown{
-        display: block;
+        background-color: var(--color3);
+        display: inline;
         height: 3vh;
-        width: 5vw;
+        width: 3vw;
         cursor: pointer;
     }
 
@@ -121,9 +124,17 @@ div.belowNav .Shop:hover {
         margin: auto;
     }
 }
-@media screen and (width <400px) {
+@media screen and (width <500px) {
+    div.navBar{
+        background-color: var(--color4);
+    }
+    div.navBar .DropDown{
+        width: 5vw;
+        /* background-color: var(--color); */
+    }
     /* Below Nav */
     div.belowNav{
-        display: none;
+        font-size: small;
+        /* display: none; */
     } 
 }
