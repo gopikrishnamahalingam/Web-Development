@@ -5,7 +5,6 @@
     --color4: rgb(250,250,250);
     --color5: rgb(26, 124, 222);
     --color6: rgb(211, 233, 242)
-
 }
 
 /* Hero Section */
@@ -43,7 +42,6 @@ div.shopProduct{
     display: flex;
     gap: 12px;
     margin: 2vh;
-    
 }
 .LearnMore{
     background-color:var(--color5) ;
@@ -52,6 +50,8 @@ div.shopProduct{
     border-radius: 100px;
     padding:10px 20px;
     font-size: large;
+    cursor: pointer;
+    text-align: center;
 }
 .shop{
     background-color: var(--color2);
@@ -59,11 +59,15 @@ div.shopProduct{
     border: 1px solid var(--color5);
     padding:10px 20px;
     border-radius: 100px;
-    font-size: large;
+    font-size: larger;
+    cursor: pointer;
+    text-align: center;
+    align-self: center;
 }
 .shop:hover{
     background-color: var(--color5);
     color: var(--color3);
+    cursor: pointer;
 }
 div.iphone img{
     
@@ -144,7 +148,7 @@ div.macbook > div{
     }
     .shop{
         text-align: center;
-        font-size: smaller;
+        font-size: medium;
     }
 }
 @media screen and (width < 360) {
