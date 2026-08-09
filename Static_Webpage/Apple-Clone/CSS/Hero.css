@@ -64,6 +64,9 @@ div.shopProduct{
     text-align: center;
     align-self: center;
 }
+.macbook .shop{
+    background-color: var(--color6);
+}
 .shop:hover{
     background-color: var(--color5);
     color: var(--color3);
@@ -106,6 +109,7 @@ div.macbook > div{
 .macbook img{
     width: 100vw;
 }
+
 
 /* Media Queries */
 
