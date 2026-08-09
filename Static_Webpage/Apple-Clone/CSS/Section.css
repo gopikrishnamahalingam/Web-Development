@@ -110,6 +110,7 @@ div.Watch{
     }
     .OtherProductsGist{
         font-size: 2.6vh;
+        width: 45vw;
     } 
     .OProduct > div{
         height: 22vw;
@@ -124,7 +125,7 @@ div.Watch{
         font-size: 2.6vh;
     } 
     .OProduct > div{
-        height: 32vw;
+        height: 25vw;
     }
     .IpadPro img{
         width: 48vw;
@@ -139,7 +140,7 @@ div.Watch{
         font-size: 2.2vh;
     } 
     .OProduct > div{
-        height: 40vw;
+        height: 30vw;
     }
   
     /* .iPad > div{
@@ -170,6 +171,9 @@ div.Watch{
     .OProduct >div{
         height: 30vh;
     }   
+    .OtherProductsGist{
+        width: 70vw;
+    }
     
 }
 @media screen and (width<360px) {
