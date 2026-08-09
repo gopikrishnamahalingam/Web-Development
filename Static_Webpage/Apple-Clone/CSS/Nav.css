@@ -10,6 +10,9 @@
     --color4: rgb(250,250,250);
 }
 
+div.StickyNav{
+   /* I'm unable to make this sticky */
+}
 /* Navigation Bar */
 /* Above */
 
@@ -28,7 +31,6 @@ div.aboveNav {
 div.aboveNav>div.Underline:hover {
     text-decoration: underline;
 }
-
 /* Nav Bar */
 div.navBarBG {
     background-color: var(--color4);
@@ -41,7 +43,6 @@ div.navBar {
     /* gap: 2vw; */
     padding: 1vh 2vw;
     justify-content: space-around;
-    
 }
 
 div.navBar .Apple_Logo {

@@ -103,6 +103,19 @@ div.Watch{
     background-color: var(--color2);
 }
 
+/* Apple TV */
+div.AppleTVLandscape{
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    overflow-y: auto;
+    justify-content: center;
+}
+
+div.AppleTVLandscape img{
+    width: 70vw;
+    /* height: auto; */
+}
 /* Media Queries */
 @media screen and (width < 1200px) {
     .OtherProductsHeading{

@@ -25,6 +25,9 @@ footer > .Terms{
     padding: 2vh;
     display: flex;
 }
+div>u{
+    cursor: pointer;
+}
 .Terms > div{
     width: 1030px;
 }
@@ -63,7 +66,7 @@ hr{
 }
 .separation{
     height: 2vh;
-    width: 100vw;
+    /* width: 100vw; */
 }
 /* Slider */
 .Slider{
@@ -79,17 +82,70 @@ hr{
     color: var(--color8);
     font-size: small;
 }
+
+/* FooterEnd */
+.FooterEnd{
+    font-size: smaller;
+    text-align: left;
+    width: 1030px;
+    color: var(--color8);
+}
+.FooterEnd div{
+    padding: 15px;
+}
+.FooterEnd a{
+    color: var(--color5);
+}
+.FooterEnd .EndStatement{
+    display: flex;
+    text-align: left;
+    padding: 0;
+}
+.EndStatement u{
+    text-decoration: none;
+    padding: 4px;
+}
+.EndStatement u:hover{
+    text-decoration: underline;
+}
+.EndStatementFlex{
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+}
+.EndStatementFlex div{
+    padding: 0;
+}
 /* Media Queries */
 @media screen and (width < 1100px) {
+    footer{
+        width: 100%;
+    }
     .Terms>div{
-        width: 90vw;
+        width: 90%;
+        margin: auto;
     }
     footer th,tr{
-        width: 30vh;
+        width: 20vh;
     }
     footer >.Other>div{
         width: 90vw;
     }
+    .FooterEnd{
+        width: 90%;
+    }
+    table{
+        width: 90%;
+    }
+    .EndStatementFlex{
+    }
+    .EndStatementFlex{
+        width: 500px;
+    }
+}
+@media screen and (width<950px) {
+    
 }
 @media screen and (width <850px) {
     table{
