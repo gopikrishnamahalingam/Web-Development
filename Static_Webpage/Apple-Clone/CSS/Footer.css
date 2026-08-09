@@ -1,0 +1,28 @@
+:root {
+    --color1: rgb(236, 234, 234);
+    --color2:  rgb(246, 245, 245);
+    --color3: rgb(255, 255, 255);
+    --color4: rgb(250,250,250);
+    --color5: rgb(26, 124, 222);
+    --color6: rgb(211, 233, 242);
+    --color7:  rgb(173, 220, 236);
+    --color8:  rgb(200, 194, 194);
+}
+footer{
+    background-color: var(--color2);
+}
+footer > .Terms{
+    font-size: 0.78rem;
+    width: 70vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    color: var(--color8);
+    padding: 2vh;
+}
+footer > .Other{
+    width: 70vw;
+    margin: auto;
+    
+}

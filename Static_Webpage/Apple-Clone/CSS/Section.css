@@ -9,7 +9,7 @@
 }
 div.shopProduct{
     display: flex;
-    gap: 12px;
+    gap: 1vh;
     margin: 2vh;
 }
 .LearnMore{
@@ -56,6 +56,8 @@ div.shopProduct{
 .OtherProductsGist{
     font-size: 3vh;
     font-weight: lighter;
+    width: 38vw;
+    text-align: center;
 }
 .OProduct > div{
     height: 15vw;
@@ -80,7 +82,7 @@ div.separator{
 }
 
 
-/* Macbook pro */
+/*  Pro */
 .Pro>:first-child{
     color: var(--color3);
 }
@@ -90,12 +92,13 @@ div.separator{
 /* Watch */
 div.Watch{
     border: 0.05vw solid black;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 .Watch img{
     width: 48.4vw;
     height: 29.9vw;
 }
+/* Airpods and Trade In */
 .Air-Trade >:first-child{
     background-color: var(--color2);
 }
@@ -109,7 +112,7 @@ div.Watch{
         font-size: 2.6vh;
     } 
     .OProduct > div{
-        height: 20vw;
+        height: 22vw;
     }
    
 }
@@ -121,7 +124,10 @@ div.Watch{
         font-size: 2.6vh;
     } 
     .OProduct > div{
-        height: 22vw;
+        height: 32vw;
+    }
+    .IpadPro img{
+        width: 48vw;
     }
   
 }
@@ -133,7 +139,7 @@ div.Watch{
         font-size: 2.2vh;
     } 
     .OProduct > div{
-        height: 25vw;
+        height: 40vw;
     }
   
     /* .iPad > div{
@@ -162,13 +168,13 @@ div.Watch{
 }
 @media screen and (width<500px) {
     .OProduct >div{
-        height: 20vh;
+        height: 30vh;
     }   
     
 }
-@media screen and (width<500px) {
+@media screen and (width<360px) {
     .OProduct >div{
-        height: 20vh;
+        height: 30vh;
     }   
      
 }
