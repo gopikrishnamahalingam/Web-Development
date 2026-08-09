@@ -43,6 +43,7 @@ div.shopProduct{
     width: 98vw;
     margin: auto;
     gap: 1vw;
+
 }
 .OtherProducts img{
     width: 48.5vw;
@@ -80,14 +81,24 @@ div.separator{
 
 
 /* Macbook pro */
-.MacBookPro>:first-child{
+.Pro>:first-child{
     color: var(--color3);
 }
-.MacBookPro >div{
+.Pro >div{
     background-color: black;
 }
 /* Watch */
-
+div.Watch{
+    border: 0.05vw solid black;
+    box-sizing: border-box;
+}
+.Watch img{
+    width: 48.4vw;
+    height: 29.9vw;
+}
+.Air-Trade >:first-child{
+    background-color: var(--color2);
+}
 
 /* Media Queries */
 @media screen and (width < 1200px) {
