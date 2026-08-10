@@ -104,12 +104,23 @@ div.Watch{
 }
 
 /* Apple TV */
+div.EndLessEntertainment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--color2);
+    height: 10vh;
+}
 div.AppleTVLandscape{
     display: flex;
     flex-direction: row;
     gap: 1vw;
     overflow-y: auto;
     justify-content: center;
+}
+div.AppleTVPotrait{
+    display: none;
 }
 
 div.AppleTVLandscape img{
@@ -178,6 +189,19 @@ div.AppleTVLandscape img{
         width: 100vw;
         height: auto;
     }
+
+    div.AppleTVLandscape{
+    display: none;
+    }
+    div.AppleTVPotrait{
+        display: flex;
+        overflow-y: auto;
+        justify-content: center;
+        gap: 2vh;
+    }
+    div.AppleTVPotrait>img{
+        width: 60vw;
+    }
    
 }
 @media screen and (width<500px) {
@@ -187,7 +211,13 @@ div.AppleTVLandscape img{
     .OtherProductsGist{
         width: 70vw;
     }
-    
+    div.AppleTVPotrait{
+        justify-content: left;
+        align-items: center;
+    }
+    div.AppleTVPotrait>img{
+    width: 70vw;
+    }
 }
 @media screen and (width<360px) {
     .OProduct >div{
