@@ -1,22 +1,24 @@
 :root {
     --color1: rgb(236, 234, 234);
-    --color2:  rgb(246, 245, 245);
+    --color2: rgb(246, 245, 245);
     --color3: rgb(255, 255, 255);
-    --color4: rgb(250,250,250);
+    --color4: rgb(250, 250, 250);
     --color5: rgb(26, 124, 222);
     --color6: rgb(211, 233, 242);
-    --color7:  rgb(173, 220, 236);
-    --color8:  rgb(107, 103, 103);
+    --color7: rgb(173, 220, 236);
+    --color8: rgb(107, 103, 103);
 }
-footer{
+
+footer {
     background-color: var(--color2);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 /* Terms */
-footer > .Terms{
+footer>.Terms {
     font-size: 0.9rem;
     display: flex;
     flex-direction: column;
@@ -25,57 +27,71 @@ footer > .Terms{
     padding: 2vh;
     display: flex;
 }
-div>u{
+
+div>u {
     cursor: pointer;
 }
-.Terms > div{
+
+.Terms>div {
     width: 1030px;
 }
+
 /* Other */
-footer > .Other>div{
+footer>.Other>div {
     width: 1030px;
     /* width: 70vw;
     margin: auto; */
 }
+
 /* Table */
-footer table{
-   padding: 2vh;
-   font-size: small;
+footer table {
+    padding: 2vh;
+    font-size: small;
 }
-footer th,td{
+
+footer th,
+td {
     text-align: left;
     width: 25vh;
     padding: 3px;
 }
-th{
+
+th {
     color: rgb(47, 45, 45);
 }
-td{
+
+td {
     color: var(--color8);
 }
-td:hover{
+
+td:hover {
     text-decoration: underline;
     cursor: pointer;
 }
-hr{
+
+hr {
     background-color: var(--color8);
     border-color: var(--color8);
     color: var(--color8);
     opacity: 20%;
     border-width: 1px;
 }
-.separation{
+
+.separation {
     height: 2vh;
     /* width: 100vw; */
 }
+
 /* Slider */
-.Slider{
+.Slider {
     display: none;
 }
-.Slider img{
+
+.Slider img {
     height: 2vh;
 }
-.SliderObject{
+
+.SliderObject {
     display: flex;
     justify-content: space-between;
     padding: 5px 0px;
@@ -84,76 +100,132 @@ hr{
 }
 
 /* FooterEnd */
-.FooterEnd{
+.FooterEnd {
     font-size: smaller;
     text-align: left;
     width: 1030px;
     color: var(--color8);
 }
-.FooterEnd div{
+
+.FooterEnd div {
     padding: 15px;
 }
-.FooterEnd a{
+
+.FooterEnd a {
     color: var(--color5);
 }
-.FooterEnd .EndStatement{
+
+.FooterEnd .EndStatement {
     display: flex;
     text-align: left;
     padding: 0;
 }
-.EndStatement u{
+
+.FooterEnd div.EndStatement2 {
+    display: none;
+}
+
+.EndStatement u {
     text-decoration: none;
     padding: 4px;
 }
-.EndStatement u:hover{
+
+.EndStatement u:hover {
     text-decoration: underline;
 }
-.EndStatementFlex{
+
+.EndStatementFlex {
     padding: 0;
     display: flex;
     justify-content: space-between;
     width: 700px;
 }
-.EndStatementFlex div{
+
+.EndStatementFlex div {
     padding: 0;
 }
+
 /* Media Queries */
 @media screen and (width < 1100px) {
-    footer{
+    footer {
         width: 100%;
     }
-    .Terms>div{
+
+    .Terms>div {
         width: 90%;
         margin: auto;
     }
-    footer th,tr{
+
+    footer th,
+    tr {
         width: 20vh;
     }
-    footer >.Other>div{
+
+    footer>.Other>div {
         width: 90vw;
     }
-    .FooterEnd{
+
+    .FooterEnd {
         width: 90%;
     }
-    table{
+
+    table {
         width: 90%;
     }
-    .EndStatementFlex{
-    }
-    .EndStatementFlex{
+
+    .EndStatementFlex {}
+
+    .EndStatementFlex {
         width: 500px;
     }
 }
-@media screen and (width<950px) {
-    
-}
+
+@media screen and (width<950px) {}
+
 @media screen and (width <850px) {
-    table{
+    table {
         display: none;
     }
-    div.Slider{
+
+    div.Slider {
         display: block;
     }
 
-}
+    .FooterEnd .EndStatement {
+        display: none;
+    }
 
+    .FooterEnd div.EndStatement2 {
+        display: block;
+        padding: 0%;
+        margin: 0;
+        font-size: small;
+    }
+    
+    .FooterEnd div {
+        padding: 0;
+    }
+    
+    .EndStatement2>div {
+        padding: 10px;
+    }
+    .EndStatement2>div >div{
+        font-size: x-small;
+        padding: 5px 0px;
+    }
+    .EndStatement2 .Closing>u{
+        padding: 0px 0.5vw;
+    }
+    #Privacy{
+        padding-left: 0px;
+    }
+    .EndStatement2 u {
+        text-decoration: none;
+
+        /* padding-right: 4px; */
+    }
+
+    .EndStatement2 u:hover {
+        text-decoration: underline;
+    }
+}
