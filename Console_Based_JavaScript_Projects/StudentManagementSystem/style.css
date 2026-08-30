@@ -1,0 +1,36 @@
+.studentForm{
+    display: grid;
+    gap: 1vh;
+    grid-template-rows: 2vh 2vh 2vh;
+    grid-template-columns: 4vw 20vw;
+}
+
+table{
+    margin-top: 5vh;
+}
+th{
+    /* padding-right: 2vw; */
+
+    text-align: center;
+}
+td{
+    text-align: right;
+}
+.Scards{
+    font-weight: bolder;
+    margin-top: 5vh;
+}
+.container{
+    display: flex;
+    gap: 1vw;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+    border: 2px solid black;
+    width: 10vw;
+    overflow-x: auto;
+    border-radius: 20px;
+    padding: 2vh;
+}
