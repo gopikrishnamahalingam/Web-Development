@@ -1,0 +1,10 @@
+.Flex{
+    display: flex;
+    justify-content: space-between;
+}
+.MyPic img{
+    height: 25vw;
+    width: 25vw;
+    object-fit: cover;
+    object-position: 10% 35%; 
+}
