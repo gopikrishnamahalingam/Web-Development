@@ -1,0 +1,80 @@
+<!-- 
+Task
+Create a student registration form containing:
+Name
+Email
+Password
+Date of birth
+Gender
+Phone number
+Course selection
+Multiple interests
+Address
+Terms & conditions agreement
+Submit button
+Reset button
+The form should be properly labelled.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form class="Form" action="">
+        <div>
+            <label for="Name">Name: </label>
+            <input type="text" name="Name" id="Name">
+        </div>
+        <div>
+            <label for="Email">Email: </label>
+            <input type="email" name="Email" id="Email">
+        </div>
+        <div>
+            <label for="Password">Password: </label>
+            <input type="password" name="Password" id="Password">
+        </div>
+        <div>
+            <label for="DOB">Date of Birth: </label>
+            <input type="date" name="DOB" id="DOB">
+        </div>
+        <div>
+            <label for="Gender">Gender: </label>
+            <select name="Gender" id="Gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div>
+            <label for="Phone">Contact Number: </label>
+            <input type="text" name="Phone" id="Phone">
+        </div>
+        <div>
+            <label for="Course">Course Selection: </label>
+            <input type="checkbox" name="Java" id="Java">Java
+            <input type="checkbox" name="Javascript" id="Javascript">Javascript
+            <input type="checkbox" name="SQL" id="SQL">SQL
+        </div>
+        <div>
+            <label for="Domain">Domain Selection: </label>
+            <input type="radio" name="Domain" id="AI" value="AI"><label for="AI">AI</label>
+            <input type="radio" name="Domain" id="DS" value="DS" ><label for="DS">DS</label>
+        <div class="Flex">
+            <label class="Address" for="Address">Address: </label>
+            <textarea name="Address" id="Address" rows="3" cols="12"></textarea>
+        </div>
+        <div>
+            <input type="checkbox" name="Terms" id="Terms">
+            <label for="Terms">I agree to the Terms and Conditions</label>
+        </div>
+
+        <button type="submit">Submit</button>
+        <input type="button" class="Reset" value="Reset Button">
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>

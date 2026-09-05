@@ -1,0 +1,7 @@
+.Form > div{
+    margin: 10px;
+}
+.Flex{
+    display: flex;
+    gap: 5px;
+}
