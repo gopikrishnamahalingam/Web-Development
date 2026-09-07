@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    text-align: center;
+    margin-top: 8vh;
+    font-size: 5rem;
+}
+.gallery{
+    margin: 8vw;
+    display: flex;
+    gap: 2vw;
+    flex-wrap: wrap;
+    /* border: 2px solid black; */
+    padding: 2vw;
+    /* margin: auto; */
+}
+.image{
+    min-height: 150px;
+    height: 20vh;
+    min-width: 250px;
+    width: 18vw;
+    object-fit: cover;
+    border: 1px solid black;
+}
+@media screen and (width < 1400px) {
+    .image{
+        min-width: 270px;
+    }
+    h1{
+        font-size: 4rem;
+    }
+}
+@media screen and (width <700px) {
+    h1{
+        font-size: 3rem;
+    }
+}
