@@ -1,0 +1,36 @@
+*{  
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 14px;
+}
+
+h1{
+    font-size: xx-large;
+}
+h2{
+    
+}
+div{
+    font-weight: bold;
+    font-size: large;
+}
+article{
+    padding: 0;
+    margin: 0;
+}
+p{
+    padding: 0;
+    font-size: large;
+}
+q{
+    font-weight: bolder;
+}
+aside{
+    width: 40%;
+    float: right;
+    padding: 20px;
+    box-shadow: 2px 0px 0px 0px inset black;
+}
+.informational{
+    font-style: italic;
+}
