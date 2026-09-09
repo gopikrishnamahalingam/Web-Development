@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.box{
+
+    padding :12px;
+    border: 2px solid black;
+    width: 20vw;
+    min-height: 160px ;
+    min-width: 160px ;
+    height: 20vw;
+}

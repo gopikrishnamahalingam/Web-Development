@@ -8,11 +8,12 @@
 }
 .container{
     height: 100vh;
-    width: 100vw;
+    width: 90vw;
     display: flex;
     flex-wrap: wrap;
     gap:30px ;
     margin: 30px;
+    margin: auto;
 }
 .card{
     height: 400px;

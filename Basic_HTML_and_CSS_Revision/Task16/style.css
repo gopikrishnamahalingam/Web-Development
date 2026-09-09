@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height:200vh;
+    background-image: url(../Photos/Techno_Enterprises/TE_background.jpg);
+    background-size:100vw 100vh ;
+    background-position: 0px 20px;
+    /* backg */
+    /* background-size: 100vw 100vh cover; */
+    background-repeat: no-repeat;
+    background-color: antiquewhite;
+}
+header{
+    position:sticky;
+    top: 0;
+    display: flex;
+    gap: 5vw;
+    justify-content: space-between;
+    background-color: rgb(121, 180, 248);
+    z-index: 1;
+}
+.navbar{
+    margin-left: 20%;
+    width: 80%;
+    display:flex;
+    font-size: large;
+    justify-content: space-around;
+}
+.navbar > div{
+    cursor: pointer;
+}
+.logo{
+    /* cursor: pointer; */
+    position: absolute;
+    float: left;
+    display:flex;
+    align-items: center;
+    background-color:rgb(121, 180, 248);
+    z-index: 2;
+}
+.logoimg{
+    height: 60px;
+}
+a{
+    height: 60px;
+}
+.logoName{
+    height: 60px;
+    width: 112px;
+    font-size: x-large;
+    padding-left: 10px;
+}
+.roboQuote{
+    color: aliceblue;
+    margin-top: 80vh;
+    font-size: xx-large;
+    text-align: center;
+}
+.sec2{
+    margin-top: 18vh;
+}
+.sec{
+    margin-left: 1vw;
+    width: 40%;
+    margin-bottom: 2vh;
+}
+.secHead{
+    padding: 4px;
+    font-weight: bolder;
+    font-size: x-large;
+}
+.secContent{
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+}
+.TE_Obj{
+    width: 50%;
+    float: right;
+    margin-top: 18vh;
+    margin-right: 5%;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+.endsec{
+    width: 40%;
+    text-align: left;
+    padding-left: 4px;
+    margin-left: 1vw;
+}
+.btn{
+    padding: 3px;
+    border-radius: 20px;
+    /* background-color: aqua; */
+    background:linear-gradient(to right, rgb(172, 221, 241), rgb(29, 130, 225));
+}
+.endQuote{
+    margin-top: 8vh;
+    font-size: 4em;
+    font-weight: bolder;
+    text-align: center;
+}
+
+footer{
+    margin-top:6vh;
+    width: 100vw;
+    text-align: center;
+    font-size: small;    
+}
