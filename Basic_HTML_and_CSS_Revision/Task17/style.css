@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(250, 242, 231);
+}
+:root{
+    --color1:  rgb(163, 163, 163);
+}
+.header{
+    margin: 30px;   
+}
+.container{
+    margin: 30px;
+    gap: 30px;
+    width: 65vw;
+    display: flex;
+    margin: auto;
+}
+.card{
+    background-color:var(--color1);
+    padding: 10px;
+    border: 2px solic black;
+    border-radius: 20px;
+    width: 20vw;   
+}
+.card2{
+    box-shadow: 0px 0px 10px 6px silver;
+}
+.card3{
+    box-shadow: 0px 0px 10px 6px gold;
+}
+.planName{
+    font-size: xx-large;
+    font-weight: bold;
+}
+.planPricing{
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.features{
+    margin: 20px 0px 20px 0px;
+}
+.btn{
+    display: flex;
+    justify-content: right;
+    /* background-color: ; */
+}
+.btn button{
+    padding: 3px;
+    border-radius: 10px;
+    /* border: 1px solid ; */
+    /* background-color: aliceblue; */
+    /* background:linear-gradient(to top right, blue,red) ; */
+}
+button.btn1{
+    background-color: var(--color1);    
+}
+button.btn2{
+    background:linear-gradient(to top right, white,silver) ;
+}
+button.btn3{
+    background:linear-gradient(to top right, white,gold) ;
+}
