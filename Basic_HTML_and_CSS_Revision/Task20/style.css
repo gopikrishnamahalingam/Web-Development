@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: antiquewhite;
+}
+header{
+    position: sticky;
+    top: 0;
+}
+.navBar{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(227, 199, 162);
+    padding: 10px;
+}
+.navBar div{
+    cursor: pointer;
+}
+.brief{
+    margin-left: 10vw;
+    /* margin-right: 10vw; */
+}
+.path{
+    color: grey;
+    /* margin-left: 10vw; */
+    margin-top: 10px;
+}
+.briefHead{
+    margin-top: 20px;
+    font-size: xx-large;
+}
+.mainContent{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.plant{
+    border: 2px solid black;
+    border-radius: 20px;
+    margin-right: 10vw;
+    display: flex;
+}
+.plantImg{
+    width: 12vw;
+    height: 12vw;
+    border-radius: 40px;
+    margin: 10px;
+    object-fit: cover;
+    object-position: top top;
+}
+.plantHead{
+    margin-top: 10px;
+    font-size: xx-large;
+}
+.features li{
+    margin-left: 15px;
+}
+footer > div{
+    margin-top: 20px;
+    text-align: center;
+    color: grey;
+    font-size: small;
+    margin-bottom: 10px;
+}
