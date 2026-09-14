@@ -1,0 +1,302 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+:root{
+    --color: rgb(245, 215, 177);
+    --bgcolor: antiquewhite;
+}
+body{
+    background-color: var(--bgcolor);
+}
+/* Navigation Bar */
+.heading{
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    background-color: var(--color);
+}
+.navBar{
+    display: flex;
+    justify-content: space-around;
+}
+.navBar a{
+    text-decoration: none;
+    color: black;
+}
+/* Article 1 */
+.article1{
+    margin: 30px;
+}
+/* Image */
+.photo{
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    object-position: 50% 35%;
+    float: right;
+    border: 2px solid black;
+    border-radius: 40px;
+    box-shadow: 10px 10px ;
+}
+.duke{
+    height: 100px;
+    position: absolute;
+    right: 106px;
+    top: 236px;
+}
+/* Hero Section */
+.Hero{
+    margin:20px 0px 20px 0px;
+    /* padding: 30px; */
+    font-weight: bolder;
+}
+.HeroName{
+    animation: Hero 2s linear; 
+    font-size: 4em;
+}
+.HeroProf{
+    font-size: 2em;
+    /* margin-left: 440px; */
+    margin-left: 36vw;
+    animation: Hero 2s linear; 
+    animation-delay: 2s;
+    animation-fill-mode: backwards;   
+}
+
+/* @keyframes Hero {
+    0%{
+        transform: translateX(-1000px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+@keyframes Details {
+    0%{
+        transform: translateX(-800px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+} */
+ /* Personal Details */
+.Details{
+    font-size: x-large;
+    animation: Details 2s linear;
+    animation-delay: 4s;
+    animation-fill-mode: backwards;
+    margin: 30px 0px 30px 0px;
+}
+.Details a{
+    /* text-decoration: none; */
+    color: rgb(18, 117, 245);
+}
+.About{
+    font-size: x-large;
+}
+.AboutHead{
+}
+.AboutContent{
+}
+/* Skills */
+.skills{
+    margin: 30px;
+}
+.tt{
+    border-radius: 10px;
+    width: 100px ;
+}
+.techStack{
+    margin: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* Projects */
+.projects{
+    margin: 30px;
+}
+.card{
+    background-color: var(--color);
+    padding: 10px;
+}
+
+/* Using Task 14 Project Card */
+.container{
+    margin: 20px 0px 20px 0px;
+    height: auto;
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap:30px ;
+    /* margin: 30px; */
+    /* margin: auto; */
+}
+.card{
+    height: 400px;
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+.cardImage{
+    height: auto;
+    width: 250px;
+    margin: 20px;
+    /* padding: 20px; */
+    align-self: center;
+    border-radius: 40px;
+    border: 1px solid black;
+}
+.Pname{
+    align-self: center;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+.Pdesc{
+    padding: 6px;
+}
+.technology{
+    display: flex;
+    gap: 2px;
+    justify-content: left;
+    margin: 3px;
+    
+}
+.tech{
+    padding: 6px;
+}
+.tool{
+    background-color: rgb(229, 226, 226);
+    border: 0.2px solid black;
+    color: grey;
+    border-radius: 20px;
+    padding: 6px;
+    min-width: 30px;
+    text-align: center;
+    font-size: smaller;
+}
+.link{
+    width: 50px;
+    padding: 3px;
+    border-radius: 10px;
+}
+.btn{
+    margin: 10px;
+    align-self: center;
+}
+/*  */
+.Contact{
+    margin: 30px;
+}
+footer{
+    padding: 10px;
+    text-align: center;
+    background-color: var(--color);
+}
+.Details,.projHead,.About,.skillsTitle{
+        font-size: x-large;
+    }
+/* Responsive */
+@media screen and (width<1200px) {
+    .HeroName{
+        font-size: 3em;
+    }
+    .HeroProf{
+        font-size: 1.5em;
+        margin-left: 32vw;
+    }
+    .tt{
+        width: 90px;
+    }
+}
+@media screen and (width<1050px) {
+    .HeroName{
+        font-size: 2em;
+    }
+    .HeroProf{
+        font-size: 1.1em;
+        margin-left: 30vw;
+    }
+    .tt{
+        width: 85px;
+    }
+    .Details,.projHead,.About,.skillsTitle{
+        font-size: large;
+    }
+}
+@media screen and (width<900px) {
+    .HeroName{
+        font-size: 2.5em;
+    }
+    .HeroProf{
+        font-size: 1.5em;
+        margin-left: 42vw;
+    }
+    .photo{
+        margin: 10vw;
+        margin: auto;
+    }
+    .Hero{
+        clear: right;
+    }
+    .photoDiv{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .duke{
+        right: 36vw;        
+    }
+    .tt{
+        width: 85px;
+    }
+    .Details,.projHead,.About,.skillsTitle{
+        font-size: large;
+    }
+}
+
+@media screen and (width<830px) {
+    .duke{
+        right: 33vw;        
+    }
+}
+@media screen and (width<760px) {
+    .duke{
+        right: 30vw;        
+    }
+    .container{
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media screen and (width<500px) {
+    .duke{
+        right: 23vw;
+        top: 45vw;
+    }
+    .photo{
+        height: 300px;
+        width: 300px;
+        margin: auto;
+    }
+    .HeroName{
+        font-size: 1.5em;
+    }
+    .HeroProf{
+        font-size: 1em;
+        margin-left: 38vw;
+    }
+    .Details,.projHead,.About,.skillsTitle{
+        font-size: medium;
+    }
+    .Contact,footer{
+        font-size: small;
+    }
+}

@@ -1,0 +1,161 @@
+<!-- 
+Task
+Create a complete portfolio page containing:
+Navigation
+Hero
+About
+Skills
+Projects
+Contact
+Footer
+It must work properly on:
+Desktop
+Tablet
+Mobile
+Test it by actually changing the browser window size. 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gopikrishna Mahalingam</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../Photos/Personal/dukeJava.png" type="image/png">
+
+</head>
+
+<body>
+    <header class="heading">
+        <nav class="navBar">
+            <a href="">Home</a>
+            <a href="">About</a>
+            <a href="">Skills</a>
+            <a href="">Projects</a>
+            <a href="">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <article class="article1">
+            <aside>
+                <div class="photoDiv">
+                    <img class="photo" src="../Photos/Personal/MyPic.jpeg" alt="MyPic">
+                    <img class="duke" src="../Photos/Personal/dukeJava.png" alt="Duke_Java">
+                </div>
+            </aside>
+            <section class="Hero">
+                <div class="HeroName">Gopikrishna Mahalingam</div>
+                <div class="HeroProf">~Frontend Developer</div>
+            </section>
+            <Section class="Details">
+                <h2>Personal Details</h2>
+                <div>Name: Gopikrishna Mahalingam</div>
+                <div>Role: Frontend Developer</div>
+                <div>College: Vivekanad Education Society's Institute of Technology</div>
+                <div>Location: Navi Mumbai, Maharashtra</div>
+                <div>LinkedIn: <a href="https://www.linkedin.com/in/gopikrishna-mahalingam-73aa43369/"
+                        target="_blank">[LinkedIn]</a> </div>
+                <div>GitHub: <a href="https://github.com/gopikrishnamahalingam" target="_blank">[Github]</a> </div>
+                <div>Leetcode: <a href="https://leetcode.com/u/Gopikrishna_Mahalingam/" target="_blank">[Leetcode]</a>
+                </div>
+                <div>Resume: <a href="../Photos/Personal/Gopikrishna_Mahalingam_Resume.pdf" target="_blank">
+                        [Resume]</a> </div>
+                <div>Email: gopikrishna.mahalingam@gmail.com</div>
+            </Section>
+            <section id="Abt" class="About">
+                <div class="AboutHead">
+                    <h2>About Me</h2>
+                </div>
+                <div class="AboutContent">
+                    I’m a Computer Engineering student with a growing interest in full-stack development. I enjoy
+                    turning ideas into working projects, learning new technologies, and challenging myself with DSA and
+                    problem-solving. Currently, I’m focusing on Java, backend development, and building a strong
+                    foundation in web development.
+                </div>
+            </section>
+        </article>
+        <article class="article2">
+            <section class="skills">
+                <div class="skillsTitle">
+                    <h2>
+                        Skills
+                    </h2>
+                </div>
+                <div class="techStack">
+                    <div><img src="../Photos/Technolgies&Tools/Java.png" alt="Java" class="tt"></div>
+                    <div><img src="../Photos/Technolgies&Tools/HTML.png" alt="HTML" class="tt"></div>
+                    <div><img src="../Photos/Technolgies&Tools/CSS.png" alt="CSS" class="tt"></div>
+                    <div><img src="../Photos/Technolgies&Tools/Javascript.png" alt="Javascript" class="tt"></div>
+                    <div><img src="../Photos/Technolgies&Tools/SQL.png" alt="SQL" class="tt"></div>
+                    <div><img src="../Photos/Technolgies&Tools/MySQL.png" alt="MySQL" class="tt"></div>
+                    <div><img src="../Photos/Technolgies&Tools/Git.png" alt="Git" class="tt"></div>
+                    <div><img src="../Photos/Technolgies&Tools/Github.png" alt="Github" class="tt"></div>
+                    <div><img src="../Photos/Technolgies&Tools/Netlify.png" alt="Netlify" class="tt"></div>
+                </div>
+            </section>
+            <!-- <section class="projects">
+                <div class="projHead"><h2>Projects</h2></div>
+                <div class="card">
+                    <div class="cardHead">Netflix Clone</div>
+                    <div class="cardContent">A responsive Netflix-inspired landing page built from scratch using HTML and CSS. Recreated the layout, navigation, hero section, content sections, and responsive design while focusing on clean structure and visual accuracy.</div>
+                </div>
+            </section> -->
+            <section class="projects">
+                <div class="projHead"><h2>Projects</h2></div>
+
+                <!-- Using Task 14 Project Cards -->
+                <div class="container">
+        <div class="card">
+            <img class="cardImage" src="../Photos/Projects/Netflix_clone.png" alt="Netflix_Clone">
+            <div class="Pname">Netflix Clone</div>
+            <div class="Pdesc">Built a Netflix-inspired website using HTML & CSS, featuring navigation, banners, and content sections.</div>
+            <div class="tech">Technologies used:</div>
+            <div class="technology">
+                <div class="tool">HTML</div>
+                <div class="tool">CSS</div>
+                <div class="tool">Netlify</div>
+            </div>
+            <a class="btn" href="https://gopikrishna-netclone.netlify.app" target="_blank"><button class="link">Visit</button></a>
+            <!-- <button class="link"><a href="">VISIT</a></button> -->
+        </div>
+        <div class="card">
+            <img class="cardImage" src="../Photos/Projects/Apple_clone.png" alt="Netflix_Clone">
+            <div class="Pname">Apple Clone</div>
+            <div class="Pdesc">Built a responsive Apple-inspired website using HTML & CSS, recreating its clean product-focused UI and layouts.</div>
+            <div class="tech">Technologies used:</div>
+            <div class="technology">
+                <div class="tool">HTML</div>
+                <div class="tool">CSS</div>
+                <div class="tool">Git</div>
+                <div class="tool">Github</div>
+                <div class="tool">Netlify</div>
+            </div>
+            <a class="btn" href="https://gopikrishna-appl-e-homepage-clone.netlify.app" target="_blank"><button class="link">Visit</button></a>
+            <!-- <button class="link"><a href="">VISIT</a></button> -->
+        </div>
+  
+            </section>
+            <section class="Contact">
+                <div>
+                    <b>
+                        For contact:
+                    </b>
+                </div>
+                <div>
+
+                    Email: gopikrishna.mahalingam@gmail.com
+                </div>
+                <div>
+                    Phone: 7039918751
+                </div>
+            </section>
+        </article>
+        <footer>
+            Undertaking: All the information are correct to the best of my knowledge!
+        </footer>
+    </main>
+
+</body>
+
+</html>
