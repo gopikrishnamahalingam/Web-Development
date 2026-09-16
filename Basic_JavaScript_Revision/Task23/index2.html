@@ -1,0 +1,78 @@
+<!-- 
+Task
+Create an input and button.
+Allow users to add items to a visible list.
+Each item should have a way to remove it. 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Prototype</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            margin: 20px;
+            font-size: larger;
+        }
+        .AddTask{
+            margin: 20px 0px 20px 0px;
+        }
+        #Task{
+            width: 200px;
+            padding: 3px;
+            border-radius: 10px;
+            font-size: medium;
+        }
+        .Btn{
+            margin-top: 0;
+            padding: 6px;
+            border-radius: 10px;
+        } 
+        .taskList{
+            margin-left: 20px;
+        }
+        .taskList > li{
+            /* display: flex; */
+            width: 30vw;
+            /* justify-content: space-between; */
+            padding: 10px;
+        }
+        .strike{
+            text-decoration: line-through;
+        }
+        li > div{
+            display: flex;
+            justify-content: space-between;
+        }
+        li > button{
+            padding: 2px;
+        }
+        .taskList > li:hover{
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+    <div class="AddTask">
+        <div>Add Items to List</div>
+        <form class="form" action="">
+            <label for="Task" class="label">Task:</label>
+            <input type="text" name="Task" id="Task">
+            <button class="addBtn Btn">Add</button>
+            <label for="display" class="display"></label>
+        </form>
+    </div>
+    <div class="list">
+        <div>Tasks Remaining</div>
+        <ol class="taskList">
+
+        </ol>
+    </div>
+    <script src="script2.js"></script>
+</body>
+</html>
