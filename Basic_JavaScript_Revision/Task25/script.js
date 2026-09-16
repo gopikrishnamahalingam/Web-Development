@@ -1,7 +1,6 @@
 // Task
-// Create a page containing a collection of student objects.
-// Display the students dynamically on the webpage.
-// Do not manually write each student into the HTML. 
+// Add a search interface to Task 24.
+// When the user searches, display the matching students.
 
 // const id = document.querySelector(".inputID");
 const name = document.querySelector(".inputName");
@@ -85,3 +84,31 @@ function addStudent(x){
     tableBody.append(tr);
 
 }
+const search = document.querySelector("#search");
+const searchBtn = document.querySelector(".searchBtn");
+const container = document.querySelector(".container");
+
+searchBtn.addEventListener("click",()=>{
+    container.innerHTML="";
+    
+    const stud = students.filter((a)=> (a.name.toLowerCase()).includes(search.value.trim().toLowerCase()));
+    
+    stud.forEach(element => {
+        const div = document.createElement("div");
+        const id = document.createElement("div");
+        const name = document.createElement("div");
+        const marks = document.createElement("div");
+        div.classList.add("card");
+        
+        id.textContent = "Student's ID: "+element.id;
+        name.textContent = "Student's Name: "+element.name;
+        marks.textContent = "Student's Marks: "+element.marks;
+        div.append(id,name,marks);
+        container.append(div);
+    });
+    if(stud.length == 0){
+        const div = document.createElement("div");
+        div.textContent = "No such Student";
+        container.append(div);
+    }
+})

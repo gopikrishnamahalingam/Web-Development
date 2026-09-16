@@ -96,7 +96,7 @@ function updatedel(){
             console.log("Deleted Successfully");
             add();
             addCard();
-            // updatedel();
+            updatedel();
         })
     }
 }
