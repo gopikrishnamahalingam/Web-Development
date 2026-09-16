@@ -1,0 +1,84 @@
+<!-- 
+Task
+Create a page containing a collection of student objects.
+Display the students dynamically on the webpage.
+Do not manually write each student into the HTML. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentManagementSystem - Prototype</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            margin: 20px;
+        }
+        .addStudents{
+            margin: 20px;
+        }
+        .Btn{
+            padding: 3px;
+        }
+        .form > div{
+            margin:10px 0px;
+            width: 20vw;
+            display: flex;
+            justify-content: space-between;
+        }
+        th,td{
+            padding: 10px;
+            width: 200px;
+            text-align: right;
+            /* color: blue; */
+        }
+        .Student_Table{
+            margin: 20px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Student Management System</h1>
+    </header>
+    <div class="addStudents">
+        <form class="form" action="">
+            <!-- <div> -->
+                <!-- <label for="ID">Enter Student's ID:</label>
+                <input type="number" class="inputID" name="ID" id="ID">
+            </div> -->
+            <div>
+                <label for="Name">Enter Student's Name:</label>
+                <input type="text" class="inputName" name="Name" id="Name">
+            </div>
+            <div>
+                <label for="Marks">Enter Student's Marks:</label>
+                <input type="number" class="inputMarks" name="Marks" id="Marks">
+            </div>
+            <button type="submit" class="addBtn Btn">Add Student</button>
+            <label for="errors" class="display"></label>
+        </form>
+    </div>
+    <table class="Student_Table">
+        <caption>Student Table</caption>
+        <thead>
+            <tr>
+                <th>Student_ID</th>
+                <th>Name</th>
+                <th>Marks</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="body">
+
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
