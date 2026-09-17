@@ -1,0 +1,102 @@
+<!-- 
+Task
+Create a registration form containing:
+Name
+Email
+Age
+Password
+Course
+Validate the form when it is submitted.
+Display appropriate feedback for invalid input. 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: antiquewhite;
+        }
+        .bordering{
+            border: 2px solid black;
+            margin: 20px;
+            padding: 10px;
+            width: 380px;
+        }
+        h1{
+            width: 380px;
+        }
+        .form{
+            font-size: x-large;
+            width: 380px;
+        }
+        .form .field{
+            margin :10px 0px 10px 0px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .Btn{
+            padding: 8px;
+        }
+        .forErrors{
+            margin: 20px;
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <div class="bordering">
+        <h1>Registration Form</h1>
+        <form action="" class="form">
+            <div class="field">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="field">
+                <label for="email">Email: </label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="field">
+                <label for="age">Age:</label>
+                <input type="number" name="age" id="age">
+            </div>
+            <div class="field">
+                <label for="pass">Password:</label>
+                <input type="password" name="pass" id="pass">
+            </div>
+            <div>
+                <label for="gender">Gender</label>
+                <input type="radio" name="gender" id="male" value="male">Male
+                <input type="radio" name="gender" id="female" value="female">Female
+                <input type="radio" name="gender" id="other" value="other">Other
+            </div>
+            <div>
+                <label for="course">Courses:</label>
+                <input type="checkbox" name="course"  value="java">
+                <label for="java">Java</label>
+                <input type="checkbox" name="course"  value="python">
+                <label for="python">Python</label>
+                <input type="checkbox" name="course" value="javascript">
+                <label for="javascript">Javascript</label>
+            </div>
+
+            <div>
+                <label for="mentore">Mentor</label>
+                <select name="mentor" id="mentor">
+                    <option value="harry">Harry</option>
+                    <option value="kunal">Kunal</option>
+                </select>
+            </div>
+            <button class="submitBtn Btn" type="submit">Submit</button>
+        </form>
+    </div>
+    <p class="forErrors"></p>
+    <script src="script.js"></script>
+</body>
+</html>
