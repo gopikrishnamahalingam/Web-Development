@@ -1,0 +1,233 @@
+<!-- 
+Task
+Integrate into Student Management system
+Filter students
+Sort students
+Calculate statistics
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentManagementSystem - Prototype</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        :root{
+            --bgcolor: rgb(228, 189, 136);
+        }
+        body {
+            background-color: antiquewhite;
+        }
+
+
+        header {
+            margin: 20px;
+        }
+
+        .addStudents {
+            margin: 20px;
+        }
+
+        .Btn {
+            padding: 3px;
+            margin: 0px 3px 0px 3px;
+        }
+
+        .form>div {
+            margin: 10px 0px;
+            width: 20vw;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .AnalyzeBtn {
+            margin: 20px;
+        }
+
+        .dialog2 {
+            display: flex;
+            gap: 15px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 220px 100px;
+            height: 300px;
+            width: 300px;
+            background-color: var(--bgcolor);
+            border-radius: 40px;
+        }
+        .dialog2 > div{
+            /* margin: 20px; */
+            width: 200px;   
+        }
+
+
+
+        th,
+        td {
+            padding: 10px;
+            width: 200px;
+            text-align: right;
+            /* color: blue; */
+        }
+
+        caption {
+            font-weight: bolder;
+            font-size: larger;
+        }
+
+        tbody>tr:hover {
+            background-color: var(--bgcolor);
+        }
+
+        .Student_Table {
+            margin: 20px;
+            border: 1px solid black;
+        }
+
+        .filterBtn {
+            margin-right: 4px;
+        }
+
+        .filterImg {
+            height: 14px;
+        }
+
+        .InsideFilterBtn {
+            margin: 4px 20px;
+            padding: 4px;
+            font-size: medium;
+            border-radius: 8px;
+        }
+
+        .flexyDiv {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .searchStudent {
+            float: right;
+            margin-right: 40px;
+            padding: 10px;
+            width: 300px;
+            height: auto;
+            box-shadow: -2px 0px black;
+            /* background-color: aqua; */
+        }
+
+        .dialog {
+            font-size: larger;
+            display: flex;
+            margin: auto;
+            padding: 40px;
+            height: 300px;
+            width: 200px;
+            background-color: var(--bgcolor);
+            border-radius: 40px;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .dialogBtn {
+            border-radius: 20px;
+            margin: 15px;
+            padding: 10px;
+            font-size: small;
+        }
+
+        .dialog1 {
+            background-color: var(--bgcolor);
+            height: 100px;
+            width: 200px;
+            margin: 6vh 30vw;
+            padding: 6px;
+            border-radius: 20px;
+        }
+
+        .dialog1 input {
+            /* margin:5px 5px; */
+            width: 40px;
+            margin: 0px 10px;
+        }
+
+        .dialog1 h3 {
+            text-align: center;
+        }
+
+        .card {
+            background-color: var(--bgcolor);
+            border: 1px solid black;
+            padding: 12px;
+            margin: 4px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Student Management System</h1>
+    </header>
+    <div class="addStudents">
+        <form class="form" action="">
+            <!-- <div> -->
+            <!-- <label for="ID">Enter Student's ID:</label>
+                <input type="number" class="inputID" name="ID" id="ID">
+            </div> -->
+            <div>
+                <label for="Name">Enter Student's Name:</label>
+                <input type="text" class="inputName" name="Name" id="Name">
+            </div>
+            <div>
+
+                <label for="Marks">Enter Student's Marks:</label>
+                <input type="number" class="inputMarks" name="Marks" id="Marks">
+            </div>
+            <button type="submit" class="addBtn Btn">Add Student</button>
+            <label for="errors" class="display"></label>
+        </form>
+    </div>
+    <aside class="searchStudent">
+        <div>
+            <label for="search">Search</label>
+            <input type="text" name="search" id="search">
+            <button class="Btn searchBtn">Search</button>
+        </div>
+        <div class="container">
+        </div>
+    </aside>
+    <button class="Btn AnalyzeBtn">Table Analysis</button>
+    <table class="Student_Table">
+        <caption>Student Table</caption>
+        <thead>
+            <tr>
+                <th>Student_ID</th>
+                <th>Name</th>
+                <th><button class="filterBtn "><img src="Images/filter.png" alt="" class="filterImg">
+
+                    </button>Marks</th>
+                <th>
+                    SortBy
+                    <select name="sortBy" id="sortBy">
+                        <option value="reset">Reset</option>
+                        <option value="marksLH">Marks: Low to High</option>
+                        <option value="marksHL">Marks: High to Low</option>
+                        <option value="nameAsc">Name: Asc to Desc</option>
+                        <option value="nameDesc">Name: Desc to Asc</option>
+                    </select>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="body">
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+
+</html>
