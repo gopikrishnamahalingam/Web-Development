@@ -1,0 +1,147 @@
+<!-- 
+Task
+Allow an existing student's information to be edited.
+The updated information should immediately appear in the interface.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentManagementSystem - Prototype</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: antiquewhite;
+        }
+
+        header {
+            margin: 20px;
+        }
+
+        .addStudents {
+            margin: 20px;
+        }
+
+        .Btn {
+            padding: 3px;
+            margin:0px 3px 0px 3px;
+        }
+
+        .form>div {
+            margin: 10px 0px;
+            width: 20vw;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            width: 200px;
+            text-align: right;
+            /* color: blue; */
+        }
+
+        tbody>tr:hover {
+            background-color: rgb(240, 213, 176);
+        }
+
+        .Student_Table {
+            margin: 20px;
+            border: 1px solid black;
+        }
+
+        .searchStudent {
+            float: right;
+            margin-right: 40px;
+            padding: 10px;
+            width: 300px;
+            height: auto;
+            box-shadow: -2px 0px black;
+            /* background-color: aqua; */
+        }
+
+        .dialog {
+            font-size: larger;
+            display: flex;
+            margin: auto;
+            padding: 40px;
+            height: 300px;
+            width: 200px;
+            background-color: white;
+            border-radius: 40px;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .dialogBtn{
+            border-radius: 20px;
+            margin: 15px;
+            padding: 10px;
+            font-size: small;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid black;
+            padding: 12px;
+            margin: 4px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Student Management System</h1>
+    </header>
+    <div class="addStudents">
+        <form class="form" action="">
+            <!-- <div> -->
+            <!-- <label for="ID">Enter Student's ID:</label>
+                <input type="number" class="inputID" name="ID" id="ID">
+            </div> -->
+            <div>
+                <label for="Name">Enter Student's Name:</label>
+                <input type="text" class="inputName" name="Name" id="Name">
+            </div>
+            <div>
+                <label for="Marks">Enter Student's Marks:</label>
+                <input type="number" class="inputMarks" name="Marks" id="Marks">
+            </div>
+            <button type="submit" class="addBtn Btn">Add Student</button>
+            <label for="errors" class="display"></label>
+        </form>
+    </div>
+    <aside class="searchStudent">
+        <div>
+            <label for="search">Search</label>
+            <input type="text" name="search" id="search">
+            <button class="Btn searchBtn">Search</button>
+        </div>
+        <div class="container">
+        </div>
+    </aside>
+    <table class="Student_Table">
+        <caption>Student Table</caption>
+        <thead>
+            <tr>
+                <th>Student_ID</th>
+                <th>Name</th>
+                <th>Marks</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="body">
+
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+
+</html>
