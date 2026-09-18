@@ -1,10 +1,111 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-:root{
+
+:root {
     --bgcolor: rgb(202, 239, 251);
 }
-body{
+
+body {
     background-color: var(--bgcolor);
+}
+
+
+
+/* Expense Statistics */
+.expenseStatistic {
+    width: 25vw;
+    min-width: 300px;
+    min-height: 90vh;
+    overflow-x: scroll;
+    border: 1px solid black;
+    margin: 0vh 2vw;
+    border-radius: 40px;
+    float: left;
+}
+
+
+
+/* Main Section */
+.mainSection {
+    /* border: 1px solid black; */
+    background-color: aqua;
+    height: 90vh;
+    width: 68vw;
+    margin: 5vh 0vw 5vh 30vw;
+}
+
+.mainFunctions {
+    /* margin: ; */
+}
+
+.expenseContainer {
+    display: flex;
+    gap: 20px;
+}
+
+.expenseCard {
+    background-color: bisque;
+    border-radius: 40px;
+    padding: 20px;
+    height: 100px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid;
+    justify-content: center;
+}
+
+/* Add Expense */
+.addExpenseBtn {
+    padding: 8px 12px;
+    font-size: medium;
+    border-radius: 20px;
+}
+
+/* Search Expense */
+#searchExpense {
+    border-radius: 20px;
+    padding: 4px;
+    font-size: 1.4em;
+}
+
+
+/* Dialog Box CSS */
+.dialog {
+    height: 400px;
+    width: 300px;
+    padding: 20px;
+    margin: auto;
+    font-size: large;
+    border-radius: 30px;
+}
+
+.dialog form {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dialog div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialog textarea {
+    width: 145px;
+    height: 60px;
+}
+
+.dialog button {
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.dialog p {
+    color: red;
+    font-weight: bold;
 }
