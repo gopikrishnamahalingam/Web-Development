@@ -1,5 +1,5 @@
 // Expense Array
-const AllExpenses = [];
+let AllExpenses = [];
 
 
 // Validation Function
@@ -174,7 +174,7 @@ addExpenseBtn.addEventListener('click', (e) => {
         // input4.value = "";
         dialog.remove();
         addExpenseToDOM(AllExpenses[AllExpenses.length - 1]);
-        // console.log(AllExpenses);
+        console.log(AllExpenses);
     })
 
 
@@ -243,10 +243,22 @@ const searchExpenseBtn = document.querySelector(".searchExpenseBtn");
 
 searchExpenseBtn.addEventListener("click",()=>{
     // if(searchExpense.value ==""){}
-
+    
     const filteredArray = AllExpenses.filter((a) => a.name.toLowerCase().includes(searchExpense.value.toLowerCase().trim()));
-
+    
     container.innerHTML = "";
     filteredArray.forEach(e => addExpenseToDOM(e));
-
+    
 })
+
+// Reset Expense
+const resetExpenseBtn = document.querySelector(".resetExpenseBtn");
+resetExpenseBtn.addEventListener("click",()=>{
+    Exp_Id =0;
+    container.innerHTML ="";
+    AllExpenses = [];
+    console.log(AllExpenses);
+    
+})
+
+// Expense Statistic

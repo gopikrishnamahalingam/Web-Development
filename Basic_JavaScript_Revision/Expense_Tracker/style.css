@@ -18,12 +18,17 @@ body {
 .expenseStatistic {
     width: 25vw;
     min-width: 300px;
-    min-height: 90vh;
+    min-height: 80vh;
     overflow-x: scroll;
     border: 1px solid black;
     margin: 0vh 2vw;
     border-radius: 40px;
     float: left;
+    padding: 20px;
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 
