@@ -3,7 +3,7 @@ const AllExpenses = [];
 
 
 // Validation Function
-function validation(x,p) {
+function validation(x, p) {
     if (x.name == "") {
         p.textContent = "Name Cannot be empty!";
         return -1;
@@ -25,22 +25,109 @@ function addExpenseToDOM(x) {
     const card = document.createElement("div");
     card.classList.add("expenseCard");
 
+    const div1 = document.createElement("div");
+    const label1 = document.createElement("label");
+    const label2 = document.createElement("label");
+    label1.textContent = "Expense ID: ";
+    label2.textContent = x.expense_ID;
+    div1.append(label1, label2);
+
+    const div2 = document.createElement("div");
+    const label3 = document.createElement("label");
+    const label4 = document.createElement("label");
+    label3.textContent = "Name: ";
+    label4.textContent = x.name;
+    div2.append(label3, label4);
+
+    const div3 = document.createElement("div");
+    const label5 = document.createElement("label");
+    const label6 = document.createElement("label");
+    label5.textContent = "Amount: ₹";
+    label6.textContent = x.amount;
+    div3.append(label5, label6);
+
+    const div4 = document.createElement("div");
+    const label7 = document.createElement("label");
+    const label8 = document.createElement("label");
+    label7.textContent = "Date: ";
+    label8.textContent = x.date;
+    div4.append(label7, label8);
+
+    const div5 = document.createElement("div");
+    const label9 = document.createElement("label");
+    const label10 = document.createElement("label");
+    label9.textContent = "Additional Note: ";
+    label10.textContent = x.note;
+    div5.append(label9, label10);
+
     const div6 = document.createElement("div");
-    div6.textContent = `Name: ${x.name}`;
+    const updBtn = document.createElement("button");
+    updBtn.textContent = "Update";
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "Delete";
+    div6.append(updBtn, delBtn);
 
-    const div7 = document.createElement("div");
-    div7.textContent = `Amount: ${x.amount}`;
+    updBtn.addEventListener("click", () => {
+        const findingExpense = updBtn.parentElement.parentElement.firstChild.lastChild.textContent;
+        const findingData = AllExpenses.find((a) => a.expense_ID == findingExpense);
 
-    const div8 = document.createElement("div");
-    div8.textContent = `Date: ${x.date}`;
+        const dialog = document.createElement("dialog");
+        dialog.classList.add("dialog");
+        dialogCreation(dialog);
 
-    const div9 = document.createElement("div");
-    div9.textContent = `Additional Note: ${x.note}`;
+        const head = dialog.firstChild.firstChild;
 
-    card.append(div6, div7, div8, div9);
+        head.textContent = "Update Expense";
+
+        head.nextSibling.lastChild.value = findingData.name;
+        head.nextSibling.nextSibling.lastChild.value = Number(findingData.amount);
+        head.nextSibling.nextSibling.nextSibling.lastChild.value = findingData.date;
+        head.nextSibling.nextSibling.nextSibling.nextSibling.lastChild.value = findingData.note;
+
+        dialog.firstChild.lastChild.previousSibling.firstChild.textContent = "Update";
+
+        dialog.firstChild.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const exp = {
+                name: head.nextSibling.lastChild.value.trim(),
+                amount: head.nextSibling.nextSibling.lastChild.value,
+                date: head.nextSibling.nextSibling.nextSibling.lastChild.value,
+                note: head.nextSibling.nextSibling.nextSibling.nextSibling.lastChild.value,
+            }
+
+            // if(validation(exp,dialog.firstChild.lastChild) ==-1){
+            //     return;
+            // }
+
+            const expenseIndex = AllExpenses.findIndex((a) => a.expense_ID == findingExpense);
+            label4.textContent = AllExpenses[expenseIndex].name = exp.name;
+            label6.textContent = AllExpenses[expenseIndex].amount = exp.amount;
+            label8.textContent = AllExpenses[expenseIndex].date = exp.date;
+            label10.textContent = AllExpenses[expenseIndex].note = exp.note;
+
+            dialog.remove();
+        })
+
+        document.body.append(dialog);
+        dialog.showModal();
+
+
+    })
+
+    delBtn.addEventListener("click", () => {
+        const findingExpense = updBtn.parentElement.parentElement.firstChild.lastChild.textContent;
+        AllExpenses.splice(AllExpenses.findIndex((a) => a.expense_ID == findingExpense), 1);
+        console.log(findingExpense);
+        console.log(AllExpenses);
+        updBtn.parentElement.parentElement.remove();
+
+    })
+
+    card.append(div1, div2, div3, div4, div5, div6);
     container.append(card);
 }
-
+let Exp_Id = 0;
 // Add Expense 
 const addExpenseBtn = document.querySelector(".addExpenseBtn");
 addExpenseBtn.addEventListener('click', (e) => {
@@ -49,14 +136,14 @@ addExpenseBtn.addEventListener('click', (e) => {
     dialog.classList.add("dialog");
 
     const head = dialog.firstChild.firstChild;
-    head.textContent= "Add Expense";
+    head.textContent = "Add Expense";
 
     // console.log(head.textContent);
 
-    // head.nextSibling.nextSibling.textContent = "Add Expense";
+    dialog.firstChild.lastChild.previousSibling.firstChild.textContent = "Add Expense";
     head.parentElement.addEventListener("submit", (e) => {
         e.preventDefault();
-        
+
         // console.log(input4.value=="");
         // console.log(typeof(input3.value));
         const exp = {
@@ -66,20 +153,28 @@ addExpenseBtn.addEventListener('click', (e) => {
             note: head.nextSibling.nextSibling.nextSibling.nextSibling.lastChild.value,
         }
 
-        console.log(exp.name);
-        if (validation(exp , dialog.firstChild.lastChild) === -1) {
-            return;
-        }
-        if(exp.note==""){exp.note ="-";}
-        AllExpenses.push(exp);
+        // console.log(exp.name);
 
+        // ******
+        // if (validation(exp , dialog.firstChild.lastChild) === -1) {
+        //     return;
+        // }
+        console.log("ADD VALIDATION");
+
+        AllExpenses.push({
+            expense_ID: ++Exp_Id,
+            name: exp.name,
+            amount: Number(exp.amount),
+            date: exp.date,
+            note: (exp.note == "") ? "-" : exp.note
+        });
         // input1.value = "";
         // input2.value = "";
         // input3.value = "";
         // input4.value = "";
         dialog.remove();
         addExpenseToDOM(AllExpenses[AllExpenses.length - 1]);
-        console.log(AllExpenses);
+        // console.log(AllExpenses);
     })
 
 
@@ -128,8 +223,17 @@ function dialogCreation(dialog) {
 
     const AddUpdBtn = document.createElement("button");
     div5.append(AddUpdBtn);
+    AddUpdBtn.type = "submit";
+
+    const CloseBtn = document.createElement("button");
+    div5.append(CloseBtn);
+    CloseBtn.type = "button";
     form.append(h3, div1, div2, div3, div4, div5, p);
 
+    CloseBtn.textContent = "Close";
+    CloseBtn.addEventListener("click", () => {
+        dialog.remove();
+    })
     dialog.append(form);
 }
 
