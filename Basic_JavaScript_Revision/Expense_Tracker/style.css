@@ -70,7 +70,7 @@ body {
 }
 
 /* Add Expense */
-.addExpenseBtn {
+.ExpenseBtn {
     padding: 8px 12px;
     font-size: medium;
     border-radius: 20px;

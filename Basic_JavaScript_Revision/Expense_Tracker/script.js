@@ -238,3 +238,15 @@ function dialogCreation(dialog) {
 }
 
 // Search Expense
+const searchExpense = document.querySelector("#searchExpense");
+const searchExpenseBtn = document.querySelector(".searchExpenseBtn");
+
+searchExpenseBtn.addEventListener("click",()=>{
+    // if(searchExpense.value ==""){}
+
+    const filteredArray = AllExpenses.filter((a) => a.name.toLowerCase().includes(searchExpense.value.toLowerCase().trim()));
+
+    container.innerHTML = "";
+    filteredArray.forEach(e => addExpenseToDOM(e));
+
+})
