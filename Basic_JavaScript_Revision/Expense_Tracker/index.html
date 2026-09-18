@@ -20,21 +20,40 @@ See total expenditure
 <body>
     <!-- Expense Statistics -->
     <aside class="expenseStatistic"> 
-        <h2>Statistics</h2>
-        <div>
-            <label>Total Expenses: </label>
+        <div class="Statistics">
+            <h2>Statistics</h2>
+            <div>
+                <label>Total No of Expenses: </label>
+            </div>
+            <div>
+                <label>Total Expenses: </label>
+            </div>
+            <div>
+                <label>Highest Expense: </label>
+            </div>
+            <div>
+                <label>Spent on: </label>
+            </div>
+            <div>
+                <label>Lowest Expense: </label>
+            </div>
+            <div>
+                <label>Spent on: </label>
+            </div>
         </div>
-        <div>
-            <label>Highest Expense: </label>
-        </div>
-        <div>
-            <label>Spent on: </label>
-        </div>
-        <div>
-            <label>Lowest Expense: </label>
-        </div>
-        <div>
-            <label>Spent on: </label>
+        <div class="Filters">
+            <h2>Filters</h2>
+            <div>Sort By: 
+                <select name="sortByFilter" id="sortByFilter">
+                    <option value="reset">reset</option>
+                    <option value="NameAsc">Name Asc to Desc</option>
+                    <option value="NameDesc">Name Desc to Asc</option>
+                    <option value="AmountLH">Amount Low to High</option>
+                    <option value="AmountHL">Amount High to Low</option>
+                    <option value="NtO">New to Old (Most Recent first)</option>
+                    <option value="OtN">Old to New (Chronological)</option>
+                </select>
+            </div>
         </div>
     </aside>
 

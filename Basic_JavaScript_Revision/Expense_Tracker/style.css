@@ -24,14 +24,26 @@ body {
     margin: 0vh 2vw;
     border-radius: 40px;
     float: left;
-    padding: 20px;
+    /* padding: 20px; */
     font-size: x-large;
+    /* display: none; */
+}
+.expenseStatistic>div{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin: 20px;
 }
+.Statistics>div{
+    display: flex;
+    justify-content: space-between;
+}
+.Filters{
 
-
+}
+.Filters  select{
+    font-size: small;
+}
 
 /* Main Section */
 .mainSection {
@@ -51,6 +63,7 @@ body {
     display: flex;
     gap: 20px;
     padding: 20px;
+    flex-wrap: wrap;
 }
 
 .expenseCard {

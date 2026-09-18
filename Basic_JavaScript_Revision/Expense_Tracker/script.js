@@ -262,3 +262,43 @@ resetExpenseBtn.addEventListener("click",()=>{
 })
 
 // Expense Statistic
+
+
+// Expense Filter
+const sortByFilter = document.querySelector("#sortByFilter");
+
+sortByFilter.addEventListener("change",()=>{
+   let sortByFilterArray;
+   switch (sortByFilter.value) {
+    case "reset":{
+        sortByFilterArray = AllExpenses;
+        break;
+    }
+    case "NameAsc":{
+        sortByFilterArray = [...AllExpenses].sort((a,b)=> a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+        break;
+    }
+    case "NameDesc":{
+        sortByFilterArray = [...AllExpenses].sort((a,b)=> b.name.toLowerCase().localeCompare(a.name.toLowerCase()));
+        break;
+    }
+    case "AmountLH":{
+        sortByFilterArray = [...AllExpenses].sort((a,b)=> a.amount-b.amount);
+        break;
+    }
+    case "AmountHL":{
+        sortByFilterArray = [...AllExpenses].sort((a,b)=> b.amount-a.amount);
+        break;
+    }
+    case "NtO":{
+        sortByFilterArray = [...AllExpenses].sort((a,b)=> b.date.toLowerCase().localeCompare(a.date.toLowerCase()));
+        break;
+    }
+    case "OtN":{
+        sortByFilterArray = [...AllExpenses].sort((a,b)=> a.date.toLowerCase().localeCompare(b.date.toLowerCase()));
+        break;
+    }
+   } 
+   container.innerHTML="";
+   sortByFilterArray.forEach(e=> addExpenseToDOM(e));
+})
