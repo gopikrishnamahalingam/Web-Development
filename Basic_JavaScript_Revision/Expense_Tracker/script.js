@@ -31,7 +31,7 @@ function addExpenseToDOM(x) {
 
     if (container.firstElementChild == p) {
         container.innerHTML = "";
-        console.log("EVERY?");
+        // console.log("EVERY?");
 
     }
     statsUpdate();
@@ -188,7 +188,7 @@ addExpenseBtn.addEventListener('click', (e) => {
         if (validation(exp, dialog.firstChild.lastChild) === -1) {
             return;
         }
-        console.log("ADD VALIDATION");
+        // console.log("ADD VALIDATION");
 
         AllExpenses.push({
             expense_ID: ++Exp_Id,
