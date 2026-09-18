@@ -5,23 +5,23 @@ let Exp_Id = (JSON.parse(localStorage.getItem("Exp_Id")) == null) ? 0 : Number(J
 statsUpdate();
 // Validation Function
 function validation(x, p) {
-    // if (x.name == "") {
-    //     p.textContent = "Name Cannot be empty!";
-    //     return -1;
-    // }
-    // else if (x.amount == "") {
-    //     p.textContent = "Amount Cannot be empty!";
-    //     return -1;
-    // }
-    // else if (x.date == "") {
-    //     p.textContent = "Enter a valid Date";
-    //     return -1;
-    // }
+    if (x.name == "") {
+        p.textContent = "Name Cannot be empty!";
+        return -1;
+    }
+    else if (x.amount == "") {
+        p.textContent = "Amount Cannot be empty!";
+        return -1;
+    }
+    else if (x.date == "") {
+        p.textContent = "Enter a valid Date";
+        return -1;
+    }
 }
 
 
 const p = document.createElement("p");
-p.textContent = "No relevant content to show";
+p.textContent = "No data to display";
 const container = document.querySelector(".expenseContainer");
 if (AllExpenses.length == 0) {
     container.append(p);
@@ -289,11 +289,19 @@ resetExpenseBtn.addEventListener("click", () => {
     Exp_Id = 0;
     container.innerHTML = "";
     AllExpenses = [];
+    searchExpense.value = "";
+    sortByDate.value = "";
+    sortByFilter.value = "reset";
     // console.log(AllExpenses);
     statsUpdate();
     saveExpenses();
     container.append(p);
     // console.log("RESET");
+    expenseStatistic.classList.toggle("displayNone");
+    // if(screen && innerWidth<800){
+    //     document.querySelector(".expenseStatistic").style.display="none";
+    //     document.querySelector(".openBtn").textContent="Functions";
+    // }
 
 })
 
@@ -387,6 +395,8 @@ resetAllFilters.addEventListener("click", () => {
     container.innerHTML = "";
     AllExpenses.forEach(e => addExpenseToDOM(e));
     searchExpense.value = "";
+    sortByDate.value = "";
+    sortByFilter.value = "reset";
     // sortByDate.reset();
     // sortByFilter.reset();
 })
@@ -408,3 +418,23 @@ function loadStudents() {
 
 }
 loadStudents();
+
+const openBtn = document.querySelector(".openBtn");
+const expenseStatistic = document.querySelector(".expenseStatistic");
+openBtn.addEventListener("click",(e)=>{
+    expenseStatistic.classList.toggle("displayNone");
+//     if(expenseStatistic.checkVisibility()){
+//         expenseStatistic.style.display = "none";
+//     }
+//     else{
+//         expenseStatistic.style.display = "flex";
+//     }
+//     if(openBtn.textContent=="Functions"){
+//         openBtn.textContent = "Close";
+//     }else{
+//         openBtn.textContent="Functions";
+//     }
+
+    // expenseStatistic.classList.toggle("flexybox");
+
+})
