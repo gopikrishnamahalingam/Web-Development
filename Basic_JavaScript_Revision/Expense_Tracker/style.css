@@ -13,12 +13,12 @@ body {
 }
 
 
-
 /* Expense Statistics */
 .expenseStatistic {
+    background-color: var(--color);
     width: 25vw;
     min-width: 300px;
-    min-height: 80vh;
+    min-height: 84vh;
     overflow-x: scroll;
     border: 1px solid black;
     margin: 0vh 2vw;
@@ -57,17 +57,23 @@ body {
     width: 68vw;
     margin: 5vh 0vw 5vh 30vw;
 }
-
+h1{
+    font-size: xxx-large;
+    margin: 20px;
+}
 .mainFunctions {
     padding: 20px;
-    padding-top: 20vh;
+    padding-top: 3vh;
 }
 
+/* Add Expense */
 .expenseContainer {
     display: flex;
     gap: 20px;
+    height: 60vh;
     padding: 20px;
     flex-wrap: wrap;
+    overflow-x: scroll;
 }
 
 .expenseCard {
@@ -91,7 +97,6 @@ body {
     margin: 2px 15px;
 }
 
-/* Add Expense */
 .ExpenseBtn {
     padding: 8px 12px;
     font-size: medium;
