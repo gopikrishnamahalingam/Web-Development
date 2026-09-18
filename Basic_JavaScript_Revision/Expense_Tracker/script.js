@@ -302,3 +302,17 @@ sortByFilter.addEventListener("change",()=>{
    container.innerHTML="";
    sortByFilterArray.forEach(e=> addExpenseToDOM(e));
 })
+
+const sortByDate = document.querySelector("#sortByDate");
+sortByDate.addEventListener("change",()=>{
+    const sortByDateArray = AllExpenses.filter((a)=> a.date == sortByDate.value.trim());
+
+    container.innerHTML="";
+    sortByDateArray.forEach(e=>addExpenseToDOM(e));
+})
+
+const resetAllFilters = document.querySelector(".resetAllFilters");
+resetAllFilters.addEventListener("click",()=>{
+    container.innerHTML="";
+    AllExpenses.forEach(e=>addExpenseToDOM(e));
+})

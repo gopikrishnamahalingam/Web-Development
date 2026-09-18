@@ -38,11 +38,15 @@ body {
     display: flex;
     justify-content: space-between;
 }
-.Filters{
-
+.Filters input{ 
+    font-size: large;
 }
 .Filters  select{
     font-size: small;
+}
+.statisticBtnDiv{
+    display: flex;
+    justify-content: center;
 }
 
 /* Main Section */
