@@ -226,7 +226,7 @@ h1{
         /* flex-direction: column; */
         width: 80vw;
         height: 60vh;
-        align-items: center;
+        /* align-items: center; */
         justify-content: center;
     }
 }

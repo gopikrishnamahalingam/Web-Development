@@ -298,6 +298,7 @@ resetExpenseBtn.addEventListener("click", () => {
     container.append(p);
     // console.log("RESET");
     expenseStatistic.classList.toggle("displayNone");
+    openBtn.textContent = "Functions";
     // if(screen && innerWidth<800){
     //     document.querySelector(".expenseStatistic").style.display="none";
     //     document.querySelector(".openBtn").textContent="Functions";
@@ -423,6 +424,11 @@ const openBtn = document.querySelector(".openBtn");
 const expenseStatistic = document.querySelector(".expenseStatistic");
 openBtn.addEventListener("click",(e)=>{
     expenseStatistic.classList.toggle("displayNone");
+    if(openBtn.textContent == "Functions"){
+        openBtn.textContent = "Close";
+        return;
+    }
+    openBtn.textContent = "Functions";
 //     if(expenseStatistic.checkVisibility()){
 //         expenseStatistic.style.display = "none";
 //     }
