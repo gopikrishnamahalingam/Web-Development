@@ -1,0 +1,89 @@
+<!-- 
+Task
+Mini Project: Fake Student Data Loader
+Build a small webpage that has:
+A "Load Students" button.
+Initially, show nothing except the button.
+When clicked, simulate fetching student data from a server using a Promise and setTimeout.
+While the data is "loading", display:
+Loading students...
+After 2 seconds, display a list of students.
+Each student should have:
+Name
+Age
+Course
+Add a possibility for the simulated request to fail.
+If it fails, display an appropriate error message instead.
+Use async/await.
+Handle the failure using try/catch. 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data Loader</title>
+    <style>
+        *{  
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            margin: 10px;
+        }
+        table{
+            border: 1px solid;
+            margin-top: 10px;
+        }
+        th,td{
+            text-align: right;
+            min-width: 60px;
+        }
+        .none{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <button class="loadStudents">Load Students</button>
+    <p class="display"></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody class="TableBody none">
+            <tr>
+                <td>Khush</td>
+                <td>18</td>
+                <td>CMPN</td>
+            </tr>
+            <tr>
+                <td>Gopi</td>
+                <td>20</td>
+                <td>CMPN</td>
+            </tr>
+            <tr>
+                <td>Surya</td>
+                <td>19</td>
+                <td>IT</td>
+            </tr>
+            <tr>
+                <td>Priya</td>
+                <td>18</td>
+                <td>IT</td>
+            </tr>
+            <tr>
+                <td>Keshav</td>
+                <td>20</td>
+                <td>CMPN</td>
+            </tr>
+        </tbody>
+        <script src="script.js"></script>
+    </table>
+</body>
+</html>
