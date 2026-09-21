@@ -1,0 +1,87 @@
+<!-- 
+Build a small webpage that simulates a login request to a server.
+Requirements
+Have:
+Username input
+Password input
+Login button
+A message area
+When the user clicks Login:
+Display Logging in...
+Simulate a server request using a Promise + setTimeout().
+The simulated request should take 2 seconds.
+Use some predefined credentials in your JavaScript, for example:
+username: gopi
+password: 1234
+After 2 seconds:
+If credentials are correct, resolve the Promise.
+If credentials are incorrect, reject the Promise.
+Use async/await to handle the Promise.
+Use try/catch to handle the failed login.
+Success
+Display something like:
+Login successful!
+Welcome, gopi
+Failure
+Display something like:
+Login failed!
+Invalid username or password.
+Important
+Don't refresh the page when Login is clicked.
+The message should change dynamically.
+Don't use alert().
+Don't manually delay the UI with another timer.
+Use the same Promise/async concepts you've learned.
+Bonus — only if the basic version works
+Add a Logout button that appears after successful login.
+When clicked:
+Logged out successfully.
+ 
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Login System</title>
+    <style>
+        *{
+            background-color: black;
+            color: rgb(83, 207, 83);
+            /* color: cyan; */
+        }
+        form{
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .btn{
+            width: 100px;
+        }
+        .display{
+            width: 180px;
+        }
+    </style>
+</head>
+<body>
+    <form class="form" action="">
+        <div>
+            <label for="Username">Username:</label>
+            <input type="text" name="Username" id="Username">
+        </div>
+        <div>
+            <label for="Password">Password:</label>
+            <input type="text" name="Password" id="Password">
+        </div>
+        <div class="buttons">
+            <button class="btn">Login</button>
+
+        </div>
+        <p class="display"></p>
+    </form>
+    <script src="FakeLoginSystem.js"></script>
+</body>
+</html>
