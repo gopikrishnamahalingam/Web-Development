@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --asideColor: lightblue;
+}
+
+/* Classic Button */
+.Btn {
+    border: 1px solid black;
+    padding: 12px;
+    min-width: 60px;
+    border-radius: 20px;
+}
+
+/* Aside Content */
+.asideContent {
+    width: 20vw;
+    height: 100vh;
+    background-color: var(--asideColor);
+    float: left;
+
+}
+
+.navigation {
+    padding: 30px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.navigation button {
+    background-color: var(--asideColor);
+    border: 1px solid var(--asideColor);
+    cursor: pointer;
+}
+
+/* Main Content */
+.content {
+    /* padding: 2px; */
+    width: 80vw;
+    float: right;
+    padding: 30px;
+    box-sizing: border-box;
+
+}
+
+/* Functionalities */
+.functionalities {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.functionalities>input {
+    font-size: large;
+    padding: 6px;
+    border-radius: 20px;
+}
+
+/* Add Dialog */
+.addDialog {
+    height: 600px;
+    width: 400px;
+    border-radius: 40px;
+    background-color: lightskyblue;
+    margin: auto;
+    padding: 30px;
+    font-size: x-large;
+}
+.addDialog div{
+    
+}
+.addDialog input{
+    font-size: medium;
+
+}
