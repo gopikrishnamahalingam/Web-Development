@@ -71,9 +71,21 @@
     margin: auto;
     padding: 30px;
     font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
-.addDialog div{
-    
+.addDialog > div{
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 20px;
+}
+.addDialog > div > label{
+    width: 120px;
+}
+.addDialog > div > div > div{
+    display: flex;
+    align-items: center;
 }
 .addDialog input{
     font-size: medium;

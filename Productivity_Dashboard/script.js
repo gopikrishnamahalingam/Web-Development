@@ -52,31 +52,70 @@ addTaskBtn1.addEventListener("click",()=>{
     const div2 = document.createElement("div");
     const label2 = document.createElement("label");
     label2.textContent="Set Priority: " 
+
+
+    const div3 = document.createElement("div");
+    const div4 = document.createElement("div");
     const input2 = document.createElement("input");
     input2.type="radio";
     input2.name="priority";
     input2.value="Low"
     const label3 = document.createElement("label");
     label3.textContent="Low"
-
-    const input3 = document.createElement("input");
-    input2.type="radio";
-    input2.name="priority";
-    input2.value="Medium"
-    const label4 = document.createElement("label");
-    label3.textContent="Medium"
-
-    const input4 = document.createElement("input");
-    input2.type="radio";
-    input2.name="priority";
-    input2.value="High"
-    const label5 = document.createElement("label");
-    label3.textContent="High"
     
-    div2.append(label2,input2,label3,input3,label4,input4,label5);
+    const div5 = document.createElement("div");
+    const input3 = document.createElement("input");
+    input3.type="radio";
+    input3.name="priority";
+    input3.value="Medium"
+    const label4 = document.createElement("label");
+    label4.textContent="Medium"
+    
+    const div6 = document.createElement("div");
+    const input4 = document.createElement("input");
+    input4.type="radio";
+    input4.name="priority";
+    input4.value="High"
+    const label5 = document.createElement("label");
+    label5.textContent="High"
+    
+    div4.append(input2,label3);
+    div5.append(input3,label4);
+    div6.append(input4,label5);
+    div3.append(div4,div5,div6);
+    div2.append(label2,div3);
 
+    const div7 = document.createElement("div");
+    const label6 = document.createElement("label");
+    label6.textContent="Status:";
+    const input5 = document.createElement("select");
+    const option1 = document.createElement("option");
+    option1.textContent="Pending";
+    option1.value="Pending";
+    const option2 = document.createElement("option");
+    option2.textContent="Completed";
+    option2.value="Completed";
+    input5.append(option1,option2);
+    div7.append(label6,input5);
 
-    addDialog.append(head,div1,div2);
+    const div8 = document.createElement("div");
+    const label7 = document.createElement("label");
+    label7.textContent="Deadline:";
+    const input6 = document.createElement("input");
+    input6.type="date";
+    div8.append(label7,input6);
+    
+    
+    const div9 = document.createElement("div");
+    const addBtn = document.createElement("button");
+    const closeBtn = document.createElement("button");
+    addBtn.classList.add("Btn");
+    closeBtn.classList.add("Btn");
+    addBtn.textContent="Add";
+    closeBtn.textContent="Close";
+    div9.append(addBtn,closeBtn);
+
+    addDialog.append(head,div1,div2,div7,div8,div9);
 
 
     document.body.append(addDialog);
