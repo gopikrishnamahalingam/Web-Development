@@ -1,4 +1,3 @@
-// console.log("hi");
 const dashboard = document.querySelector(".dashboard");
 const taskManager = document.querySelector(".taskManager");
 const sessionTracker = document.querySelector(".sessionTracker");
@@ -7,6 +6,7 @@ const content = document.querySelector(".content");
 const mainHead = document.querySelector(".mainHead");
 const mainContent = document.querySelector(".mainContent");
 
+const tasks = [];
 
 dashboard.style.textDecoration = "Underline";
 
@@ -89,6 +89,7 @@ addTaskBtn1.addEventListener("click",()=>{
     const label6 = document.createElement("label");
     label6.textContent="Status:";
     const input5 = document.createElement("select");
+    input5.id="selectingStatus";
     const option1 = document.createElement("option");
     option1.textContent="Pending";
     option1.value="Pending";
@@ -112,8 +113,28 @@ addTaskBtn1.addEventListener("click",()=>{
     addBtn.classList.add("Btn");
     closeBtn.classList.add("Btn");
     addBtn.textContent="Add";
+
+    addBtn.addEventListener("click",()=>{
+        // VALIDATION ***********
+        const task = {
+            name: input1.value,
+            priority: document.querySelector('input[name="priority"]:checked').value,
+            status: document.querySelector("#selectingStatus").value,
+            date: input6.value
+        }
+        tasks.push(task);
+        console.log(tasks);
+        addDialog.remove();
+
+        
+    })
+
     closeBtn.textContent="Close";
     div9.append(addBtn,closeBtn);
+
+    closeBtn.addEventListener("click",()=>{
+        addDialog.remove();
+    })
 
     addDialog.append(head,div1,div2,div7,div8,div9);
 
