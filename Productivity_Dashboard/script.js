@@ -7,6 +7,7 @@ const mainHead = document.querySelector(".mainHead");
 const mainContent = document.querySelector(".mainContent");
 
 const tasks = [];
+let task_id = 0;
 
 dashboard.style.textDecoration = "Underline";
 
@@ -34,6 +35,7 @@ functionalities.classList.add("functionalities");
 mainContent.append(functionalities);
 
 const container = document.createElement("div");
+mainContent.append(container);
 
 addTaskBtn1.addEventListener("click",()=>{
     const addDialog = document.createElement("dialog");
@@ -117,12 +119,14 @@ addTaskBtn1.addEventListener("click",()=>{
     addBtn.addEventListener("click",()=>{
         // VALIDATION ***********
         const task = {
+            id: ++task_id,
             name: input1.value,
             priority: document.querySelector('input[name="priority"]:checked').value,
             status: document.querySelector("#selectingStatus").value,
             date: input6.value
         }
         tasks.push(task);
+        AddtoDOM(task);
         console.log(tasks);
         addDialog.remove();
 
@@ -142,6 +146,50 @@ addTaskBtn1.addEventListener("click",()=>{
     document.body.append(addDialog);
     addDialog.showModal();
 })
+
+// ADD TO DOM *************************************
+function AddtoDOM(x){
+    const card = document.createElement("div");
+    card.classList.add("card");
+    
+    const div10 = document.createElement("div");
+    const label8 = document.createElement("label");
+    const label9 = document.createElement("label");
+    label8.textContent = "Task ID:";
+    label9.textContent = x.id;
+    div10.append(label8,label9);
+    
+    const div11 = document.createElement("div");
+    const label10 = document.createElement("label");
+    const label11 = document.createElement("label");
+    label10.textContent = "Name:";
+    label11.textContent = x.name;
+    div11.append(label10,label11);
+    
+    const div12 = document.createElement("div");
+    const label12 = document.createElement("label");
+    const label13 = document.createElement("label");
+    label12.textContent = "Priority: ";
+    label13.textContent = x.priority;
+    div12.append(label12,label12);
+    
+    const div13 = document.createElement("div");
+    const label14 = document.createElement("label");
+    const label15 = document.createElement("label");
+    label14.textContent = "Status: ";
+    label15.textContent = x.status;
+    div13.append(label14,label15);
+    
+    const div14 = document.createElement("div");
+    const label16 = document.createElement("label");
+    const label17 = document.createElement("label");
+    label16.textContent = "Date: ";
+    label17.textContent = x.date;
+    div14.append(label16,label17);
+
+    card.append(div10,div11,div12,div13,div14);
+    container.append(card);
+}
 //***************************** Task Manager *****************************
 taskManager.addEventListener("click",()=>{
     

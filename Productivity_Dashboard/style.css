@@ -89,5 +89,7 @@
 }
 .addDialog input{
     font-size: medium;
-
+}
+.card{
+    background: tomato;
 }
