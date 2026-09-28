@@ -5,7 +5,8 @@ const dailyGoals = document.querySelector(".dailyGoals");
 const content = document.querySelector(".content");
 const mainHead = document.querySelector(".mainHead");
 const mainContent = document.querySelector(".mainContent");
-
+const container = document.createElement("div");
+container.classList.add("container");
 const tasks = [];
 let task_id = 0;
 
@@ -34,7 +35,6 @@ functionalities.append(searchBox,goTask,addTaskBtn1);
 functionalities.classList.add("functionalities");
 mainContent.append(functionalities);
 
-const container = document.createElement("div");
 mainContent.append(container);
 
 addTaskBtn1.addEventListener("click",()=>{

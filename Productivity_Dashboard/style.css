@@ -75,21 +75,38 @@
     flex-direction: column;
     gap: 30px;
 }
-.addDialog > div{
+
+.addDialog>div {
     display: flex;
     /* justify-content: space-between; */
     gap: 20px;
 }
-.addDialog > div > label{
+
+.addDialog>div>label {
     width: 120px;
 }
-.addDialog > div > div > div{
+
+.addDialog>div>div>div {
     display: flex;
     align-items: center;
 }
-.addDialog input{
+
+.addDialog input {
     font-size: medium;
 }
-.card{
-    background: tomato;
+
+.container{
+    display: flex;
+    gap: 20px;
+    margin: 20px 0px;
+    flex-wrap: wrap;
+
+}
+.card {
+    background: var(--asideColor);
+    min-width: 200px;
+    width: 10vw;
+    font-size: large;
+    padding: 20px;
+    border-radius: 20px;
 }
