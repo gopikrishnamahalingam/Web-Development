@@ -64,7 +64,7 @@
 
 /* Add Dialog */
 .addDialog {
-    height: 600px;
+    height: 500px;
     width: 400px;
     border-radius: 40px;
     background-color: lightskyblue;
@@ -94,6 +94,12 @@
 .addDialog input {
     font-size: medium;
 }
+.BtnDiv{
+    margin: 0px 20%;
+    display: flex;
+    justify-content: space-around;
+    font-size: larger;
+}
 
 .container{
     display: flex;
@@ -103,10 +109,16 @@
 
 }
 .card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     background: var(--asideColor);
     min-width: 200px;
     width: 10vw;
     font-size: large;
     padding: 20px;
     border-radius: 20px;
+}
+.card .BtnDiv{
+    margin: 2% 10%;
 }
