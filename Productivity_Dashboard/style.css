@@ -63,7 +63,7 @@
 }
 
 /* Add Dialog */
-.addDialog {
+.Dialog {
     height: 500px;
     width: 400px;
     border-radius: 40px;
@@ -76,22 +76,22 @@
     gap: 30px;
 }
 
-.addDialog>div {
+.Dialog>div {
     display: flex;
     /* justify-content: space-between; */
     gap: 20px;
 }
 
-.addDialog>div>label {
+.Dialog>div>label {
     width: 120px;
 }
 
-.addDialog>div>div>div {
+.Dialog>div>div>div {
     display: flex;
     align-items: center;
 }
 
-.addDialog input {
+.Dialog input {
     font-size: medium;
 }
 .BtnDiv{

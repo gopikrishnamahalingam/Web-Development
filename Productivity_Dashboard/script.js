@@ -39,7 +39,7 @@ mainContent.append(container);
 
 addTaskBtn1.addEventListener("click", () => {
     const addDialog = document.createElement("dialog");
-    addDialog.classList.add("addDialog");
+    addDialog.classList.add("Dialog");
 
     const head = document.createElement("h2");
     head.textContent = "Add Task";
@@ -205,11 +205,11 @@ function AddtoDOM(x) {
     UpdBtn.classList.add("Btn");
 
     UpdBtn.addEventListener("click", () => {
-        const addDialog = document.createElement("dialog");
-        addDialog.classList.add("addDialog");
+        const updDialog = document.createElement("dialog");
+        updDialog.classList.add("Dialog");
 
         const head = document.createElement("h2");
-        head.textContent = "Add Task";
+        head.textContent = "Update Task";
 
 
         const div16 = document.createElement("div");
@@ -301,24 +301,45 @@ function AddtoDOM(x) {
 
         const div9 = document.createElement("div");
         div9.classList.add("BtnDiv");
-        const addBtn = document.createElement("button");
+        const UpdateBtn = document.createElement("button");
         const closeBtn = document.createElement("button");
-        addBtn.classList.add("Btn");
+        UpdateBtn.classList.add("Btn");
         closeBtn.classList.add("Btn");
-        addBtn.textContent = "Add";
+        UpdateBtn.textContent = "Update";
+        UpdateBtn.dataset.id = x.id;
 
-        closeBtn.textContent = "Close";
-        div9.append(addBtn, closeBtn);
+        UpdateBtn.addEventListener("click",()=>{ //should have used forms but would need to change a lot
+            const updIndex = tasks.findIndex((a)=>a.id == UpdateBtn.dataset.id);
+            const updObj= {
+                name: input1.value,
+                priority: document.querySelector('input[name="priority"]:checked').value,
+                status: input5.value,
+                date: input6.value
+                
+            }
+            // ************validation
+            tasks[updIndex].name = updObj.name;
+            tasks[updIndex].priority = updObj.priority;
+            tasks[updIndex].status = updObj.status;
+            tasks[updIndex].date = updObj.date;
 
-        closeBtn.addEventListener("click", () => {
-            addDialog.remove();
+            console.log(tasks);
+            updDialog.remove();
         })
 
-        addDialog.append(head, div16, div1, div2, div7, div8, div9);
+
+        closeBtn.textContent = "Close";
+        div9.append(UpdateBtn, closeBtn);
+
+        closeBtn.addEventListener("click", () => {
+            updDialog.remove();
+        })
+        updDialog
+        updDialog.append(head, div16, div1, div2, div7, div8, div9);
 
 
-        document.body.append(addDialog);
-        addDialog.showModal();
+        document.body.append(updDialog);
+        updDialog.showModal();
     })
 
     const DelBtn = document.createElement("button");
