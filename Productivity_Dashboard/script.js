@@ -323,6 +323,11 @@ function AddtoDOM(x) {
             tasks[updIndex].status = updObj.status;
             tasks[updIndex].date = updObj.date;
 
+            label11.textContent = updObj.name;
+            label13.textContent = updObj.priority;
+            label15.textContent = updObj.status
+            label17.textContent = updObj.date
+
             console.log(tasks);
             updDialog.remove();
         })
