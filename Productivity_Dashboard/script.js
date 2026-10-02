@@ -29,6 +29,20 @@ const addTaskBtn1 = document.createElement("button");
 addTaskBtn1.textContent = "Add";
 addTaskBtn1.classList.add("Btn");
 
+goTask.addEventListener("click",()=>{
+    container.innerHTML ="";
+    const searchValue = searchBox.value;
+    const searchTasks = tasks.filter((a)=> a.name.toLowerCase().includes(searchValue.toLowerCase()));
+    console.log("goTask");
+    searchTasks.forEach((a)=>{
+        console.log(a);
+        console.log("1");
+        
+        AddtoDOM(a);
+    });
+    console.log("k");
+
+})
 
 const functionalities = document.createElement("div");
 functionalities.append(searchBox, goTask, addTaskBtn1);
@@ -326,12 +340,11 @@ function AddtoDOM(x) {
             label11.textContent = updObj.name;
             label13.textContent = updObj.priority;
             label15.textContent = updObj.status
-            label17.textContent = updObj.date
-
+            label17.textContent = updObj.date              
+            
             console.log(tasks);
             updDialog.remove();
         })
-
 
         closeBtn.textContent = "Close";
         div9.append(UpdateBtn, closeBtn);
