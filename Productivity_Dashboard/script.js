@@ -33,7 +33,8 @@ goTask.addEventListener("click",()=>{
     container.innerHTML ="";
     const searchValue = searchBox.value;
     const searchTasks = tasks.filter((a)=> a.name.toLowerCase().includes(searchValue.toLowerCase()));
-    console.log("goTask");
+    // console.log("goTask");
+
     searchTasks.forEach((a)=>{
         console.log(a);
         console.log("1");
@@ -138,6 +139,10 @@ addTaskBtn1.addEventListener("click", () => {
     closeBtn.classList.add("Btn");
     addBtn.textContent = "Add";
 
+    if(document.querySelector('input[name="priority"]:checked')==null){
+        return;
+    }
+
     addBtn.addEventListener("click", () => {
         // VALIDATION ***********
         const task = {
@@ -146,6 +151,9 @@ addTaskBtn1.addEventListener("click", () => {
             priority: document.querySelector('input[name="priority"]:checked').value,
             status: document.querySelector("#selectingStatus").value,
             date: input6.value
+        }
+        if(validation(task) == -1){
+            return;
         }
         // console.log(document.querySelector('input[name="priority"]:checked').value);
         tasks.push(task);
@@ -375,6 +383,15 @@ function AddtoDOM(x) {
 
     card.append(div10, div11, div12, div13, div14, div15);
     container.append(card);
+}
+
+function validation(x){
+    if(x.name.trim() == ""){
+        return -1;
+    }
+    if(x.date.trim() == null){
+        return -1;
+    }
 }
 //***************************** Task Manager *****************************
 taskManager.addEventListener("click", () => {
