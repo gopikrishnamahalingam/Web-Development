@@ -27,18 +27,35 @@ goTask.textContent = "Go";
 goTask.classList.add("Btn");
 const addTaskBtn1 = document.createElement("button");
 addTaskBtn1.textContent = "Add";
+const errorMsg = document.createElement("p");
+errorMsg.classList.add("errorMsg");
 addTaskBtn1.classList.add("Btn");
 
-goTask.addEventListener("click",()=>{
-    container.innerHTML ="";
+function validation(x) {
+    if (x.name.trim() == "") {
+        errorMsg.textContent = "Name cannot be empty";
+        return -1;
+    }
+    if (document.querySelector('input[name="priority"]:checked') == null) {
+        errorMsg.textContent = "Select Priority";
+        return -1;
+    }
+    if (x.date.trim() == "") {
+        errorMsg.textContent = "Date cannot be empty";
+        return -1;
+    }
+}
+
+goTask.addEventListener("click", () => {
+    container.innerHTML = "";
     const searchValue = searchBox.value;
-    const searchTasks = tasks.filter((a)=> a.name.toLowerCase().includes(searchValue.toLowerCase()));
+    const searchTasks = tasks.filter((a) => a.name.toLowerCase().includes(searchValue.toLowerCase()));
     // console.log("goTask");
 
-    searchTasks.forEach((a)=>{
+    searchTasks.forEach((a) => {
         console.log(a);
         console.log("1");
-        
+
         AddtoDOM(a);
     });
     console.log("k");
@@ -139,26 +156,27 @@ addTaskBtn1.addEventListener("click", () => {
     closeBtn.classList.add("Btn");
     addBtn.textContent = "Add";
 
-    if(document.querySelector('input[name="priority"]:checked')==null){
-        return;
-    }
-
     addBtn.addEventListener("click", () => {
         // VALIDATION ***********
-        const task = {
+        let task = {
             id: task_id,
             name: input1.value,
-            priority: document.querySelector('input[name="priority"]:checked').value,
             status: document.querySelector("#selectingStatus").value,
             date: input6.value
+
         }
-        if(validation(task) == -1){
+
+        if (validation(task) == -1) {
             return;
         }
+        task.priority = document.querySelector('input[name="priority"]:checked').value;
+
+        console.log(task);
         // console.log(document.querySelector('input[name="priority"]:checked').value);
         tasks.push(task);
         AddtoDOM(task);
         console.log(tasks);
+        errorMsg.textContent = "";
         addDialog.remove();
 
 
@@ -170,9 +188,10 @@ addTaskBtn1.addEventListener("click", () => {
     closeBtn.addEventListener("click", () => {
         task_id--;
         addDialog.remove();
+        errorMsg.textContent = "";
     })
 
-    addDialog.append(head, div16, div1, div2, div7, div8, div9);
+    addDialog.append(head, div16, div1, div2, div7, div8, div9, errorMsg);
 
 
     document.body.append(addDialog);
@@ -252,7 +271,7 @@ function AddtoDOM(x) {
         const label2 = document.createElement("label");
         label2.textContent = "Set Priority: "
 
-        
+
         const div3 = document.createElement("div");
         const div4 = document.createElement("div");
         const input2 = document.createElement("input");
@@ -262,7 +281,7 @@ function AddtoDOM(x) {
         const label3 = document.createElement("label");
         label3.textContent = "Low"
 
-        
+
         const div5 = document.createElement("div");
         const input3 = document.createElement("input");
         input3.type = "radio";
@@ -270,7 +289,7 @@ function AddtoDOM(x) {
         input3.value = "Medium"
         const label4 = document.createElement("label");
         label4.textContent = "Medium"
-        
+
         const div6 = document.createElement("div");
         const input4 = document.createElement("input");
         input4.type = "radio";
@@ -278,23 +297,23 @@ function AddtoDOM(x) {
         input4.value = "High"
         const label5 = document.createElement("label");
         label5.textContent = "High"
-        
+
         div4.append(input2, label3);
         div5.append(input3, label4);
         div6.append(input4, label5);
         div3.append(div4, div5, div6);
         div2.append(label2, div3);
-        
+
         console.log(x.priority);
-        if(x.priority == "High"){
+        if (x.priority == "High") {
             input4.checked = true;
-        }else if(x.priority == "Medium"){
-            input3.checked= true;
-        }else{
-            input2.checked= true;
+        } else if (x.priority == "Medium") {
+            input3.checked = true;
+        } else {
+            input2.checked = true;
         }
         // input[name="priority"].value = x.priority;
-        
+
         const div7 = document.createElement("div");
         const label6 = document.createElement("label");
         label6.textContent = "Status:";
@@ -330,15 +349,20 @@ function AddtoDOM(x) {
         UpdateBtn.textContent = "Update";
         UpdateBtn.dataset.id = x.id;
 
-        UpdateBtn.addEventListener("click",()=>{ //should have used forms but would need to change a lot
-            const updIndex = tasks.findIndex((a)=>a.id == UpdateBtn.dataset.id);
-            const updObj= {
+        UpdateBtn.addEventListener("click", () => { //should have used forms but would need to change a lot
+            const updIndex = tasks.findIndex((a) => a.id == UpdateBtn.dataset.id);
+            const updObj = {
                 name: input1.value,
-                priority: document.querySelector('input[name="priority"]:checked').value,
                 status: input5.value,
                 date: input6.value
-                
+
             }
+            if (validation(updObj) == -1) {
+                console.log("WOking");
+
+                return;
+            }
+            updObj.priority = document.querySelector('input[name="priority"]:checked').value;
             // ************validation
             tasks[updIndex].name = updObj.name;
             tasks[updIndex].priority = updObj.priority;
@@ -348,9 +372,10 @@ function AddtoDOM(x) {
             label11.textContent = updObj.name;
             label13.textContent = updObj.priority;
             label15.textContent = updObj.status
-            label17.textContent = updObj.date              
-            
+            label17.textContent = updObj.date
+
             console.log(tasks);
+            errorMsg.textContent = "";
             updDialog.remove();
         })
 
@@ -358,10 +383,11 @@ function AddtoDOM(x) {
         div9.append(UpdateBtn, closeBtn);
 
         closeBtn.addEventListener("click", () => {
+            errorMsg.textContent = "";
             updDialog.remove();
         })
         updDialog
-        updDialog.append(head, div16, div1, div2, div7, div8, div9);
+        updDialog.append(head, div16, div1, div2, div7, div8, div9, errorMsg);
 
 
         document.body.append(updDialog);
@@ -385,14 +411,7 @@ function AddtoDOM(x) {
     container.append(card);
 }
 
-function validation(x){
-    if(x.name.trim() == ""){
-        return -1;
-    }
-    if(x.date.trim() == null){
-        return -1;
-    }
-}
+
 //***************************** Task Manager *****************************
 taskManager.addEventListener("click", () => {
 

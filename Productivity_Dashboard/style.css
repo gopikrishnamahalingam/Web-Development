@@ -122,3 +122,8 @@
 .card .BtnDiv{
     margin: 2% 10%;
 }
+
+.errorMsg{
+    color: red;
+    font-size: medium;
+}
