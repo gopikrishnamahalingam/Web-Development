@@ -7,18 +7,20 @@ const mainHead = document.querySelector(".mainHead");
 const mainContent = document.querySelector(".mainContent");
 const container = document.createElement("div");
 container.classList.add("container");
+const Dashcontainer = document.createElement("div");
+Dashcontainer.classList.add("Dashcontainer");
 
-function addTasksLocalStorage(){
-    localStorage.setItem("Tasks",JSON.stringify(tasks));
-    localStorage.setItem("Tasks_id",task_id);
+function addTasksLocalStorage() {
+    localStorage.setItem("Tasks", JSON.stringify(tasks));
+    localStorage.setItem("Tasks_id", task_id);
 }
-function addSessionsLocalStorage(){
-    localStorage.setItem("Sessions",JSON.stringify(sessions));
-    localStorage.setItem("Sessions_id",session_id);
+function addSessionsLocalStorage() {
+    localStorage.setItem("Sessions", JSON.stringify(sessions));
+    localStorage.setItem("Sessions_id", session_id);
 }
-function addGoalsLocalStorage(){
-    localStorage.setItem("Goals",JSON.stringify(goals));
-    localStorage.setItem("Goals_id",goal_id);
+function addGoalsLocalStorage() {
+    localStorage.setItem("Goals", JSON.stringify(goals));
+    localStorage.setItem("Goals_id", goal_id);
 }
 
 
@@ -44,6 +46,8 @@ function dashboardFunction() {
     mainHead.textContent = "DashBoard";
     mainContent.innerHTML = "";
     container.innerHTML = "";
+    Dashcontainer.innerHTML = "";
+    container.classList.remove("goalContainer");
 
     const tasksDashboardCard = document.createElement("div");
     const sessionsDashboardCard = document.createElement("div");
@@ -51,8 +55,8 @@ function dashboardFunction() {
     tasksDashboardCard.classList.add("DashboardCard");
     sessionsDashboardCard.classList.add("DashboardCard");
     goalsDashboardCard.classList.add("DashboardCard");
-    
-    
+
+
     tasksDashboardFunction();
     function tasksDashboardFunction() {
         const tasksHeading = document.createElement("h2");
@@ -60,61 +64,61 @@ function dashboardFunction() {
         tasksHeading.classList.add("DashBoardCardHeads");
         tasksDashboardCard.append(tasksHeading);
         const totalTasks = tasks.length;
-        const completedTasks = tasks.filter((a)=>a.status=="Completed").length;
-        
+        const completedTasks = tasks.filter((a) => a.status == "Completed").length;
+
         const div12 = document.createElement("div");
         const label12 = document.createElement("label");
         const label13 = document.createElement("label");
         label12.textContent = "Remaining Tasks: ";
-        label13.textContent = totalTasks-completedTasks;
+        label13.textContent = totalTasks - completedTasks;
         div12.append(label12, label13);
-        
+
         const div11 = document.createElement("div");
         const label10 = document.createElement("label");
         const label11 = document.createElement("label");
         label10.textContent = "Completed Tasks: ";
         label11.textContent = completedTasks;
         div11.append(label10, label11);
-        
+
         const div10 = document.createElement("div");
         const label8 = document.createElement("label");
         const label9 = document.createElement("label");
         label8.textContent = "Total Tasks: ";
         label9.textContent = totalTasks;
         div10.append(label8, label9);
-        
+
         const div9 = document.createElement("div");
         div9.textContent = "Upcoming Tasks: "
-        tasksDashboardCard.append(tasksHeading,div10,div11,div12,div9);
-        
+        tasksDashboardCard.append(tasksHeading, div10, div11, div12, div9);
+
         const d = new Date();
         let date = d.getDate();
-        if(date<10){
-            date = "0"+date;
+        if (date < 10) {
+            date = "0" + date;
         }
-        let month = d.getMonth()+1;
-        if(month<10){
-            month="0"+month;
+        let month = d.getMonth() + 1;
+        if (month < 10) {
+            month = "0" + month;
         }
         const todaysDate = `${d.getFullYear()}-${month}-${date}`;
         // console.log(todaysDate);
         let upcomingTasks = tasks;
-        upcomingTasks = tasks.filter((a)=>a.date == todaysDate);
-        if(upcomingTasks.length < 3){
-            upcomingTasks = [...tasks].sort((a,b)=>a.date.localeCompare(b.date)).filter((a)=>a.date >= todaysDate);
+        upcomingTasks = tasks.filter((a) => a.date == todaysDate && a.status == "Pending");
+        if (upcomingTasks.length < 3) {
+            upcomingTasks = [...tasks].sort((a, b) => a.date.localeCompare(b.date)).filter((a) => a.date >= todaysDate && a.status == "Pending");
         }
-        for(let i=0; i<3 && i<upcomingTasks.length; i++){
-                const card = document.createElement("div");
-                card.classList.add("card");
-                const div1 = document.createElement("div");
-                div1.textContent=`Task Name: ${upcomingTasks[i].name}`;
-                const div2 = document.createElement("div");
-                div2.textContent=`Deadline: ${upcomingTasks[i].date}`;
-                card.append(div1,div2);
-                tasksDashboardCard.append(card);
+        for (let i = 0; i < 3 && i < upcomingTasks.length; i++) {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            const div1 = document.createElement("div");
+            div1.textContent = `Task Name: ${upcomingTasks[i].name}`;
+            const div2 = document.createElement("div");
+            div2.textContent = `Deadline: ${upcomingTasks[i].date}`;
+            card.append(div1, div2);
+            tasksDashboardCard.append(card);
         }
     }
-    
+
     sessionsDashboardFunction();
     function sessionsDashboardFunction() {
         const sessionsHead = document.createElement("h2");
@@ -122,41 +126,41 @@ function dashboardFunction() {
         sessionsHead.classList.add("DashBoardCardHeads");
         sessionsDashboardCard.append(sessionsHead);
         const totalSessions = sessions.length;
-        const completedSessions = sessions.filter((a)=>a.status=="Completed").length;
-        
+        const completedSessions = sessions.filter((a) => a.status == "Completed").length;
+
         const div12 = document.createElement("div");
         const label12 = document.createElement("label");
         const label13 = document.createElement("label");
         label12.textContent = "Remaining Sessions: ";
-        label13.textContent = totalSessions-completedSessions;
+        label13.textContent = totalSessions - completedSessions;
         div12.append(label12, label13);
-        
+
         const div11 = document.createElement("div");
         const label10 = document.createElement("label");
         const label11 = document.createElement("label");
         label10.textContent = "Completed Sessions: ";
         label11.textContent = completedSessions;
         div11.append(label10, label11);
-        
+
         const div10 = document.createElement("div");
         const label8 = document.createElement("label");
         const label9 = document.createElement("label");
         label8.textContent = "Total Sessions: ";
         label9.textContent = totalSessions;
         div10.append(label8, label9);
-        
+
         const div8 = document.createElement("div");
         const label6 = document.createElement("label");
         const label7 = document.createElement("label");
         label6.textContent = "Total Duration: ";
-        label7.textContent = sessions.reduce((s,c)=>s=s+Number(c.duration),0)+" mins";
+        label7.textContent = sessions.reduce((s, c) => s = s + Number(c.duration), 0) + " mins";
         div8.append(label6, label7);
 
-        
+
         const div9 = document.createElement("div");
         div9.textContent = "Upcoming Sessions: "
-        sessionsDashboardCard.append(sessionsHead,div10,div11,div12,div8);
-        
+        sessionsDashboardCard.append(sessionsHead, div10, div11, div12, div8);
+
         // const d = new Date();
         // let date = d.getDate();
         // if(date<10){
@@ -184,7 +188,7 @@ function dashboardFunction() {
         //         tasksDashboardCard.append(card);
         // }
     }
-    
+
     goalsDashboardFunction();
     function goalsDashboardFunction() {
         const goalsHead = document.createElement("h2");
@@ -192,13 +196,13 @@ function dashboardFunction() {
         goalsHead.classList.add("DashBoardCardHeads");
         const div1 = document.createElement("div");
         div1.textContent = `Pending: ${goalsNotChecked.length}`
-        
+
         const div2 = document.createElement("div");
         div2.textContent = `Today's Goal Left:`
-        
-        goalsDashboardCard.append(goalsHead,div1,div2);
-        
-        goalsNotChecked.forEach((a)=>{
+
+        goalsDashboardCard.append(goalsHead, div1, div2);
+
+        goalsNotChecked.forEach((a) => {
             const div3 = document.createElement("div");
             div3.textContent = "~ " + a.name;
             goalsDashboardCard.append(div3);
@@ -206,8 +210,8 @@ function dashboardFunction() {
         })
     }
 
-    container.append(tasksDashboardCard, goalsDashboardCard, sessionsDashboardCard);
-    mainContent.append(container);
+    Dashcontainer.append(tasksDashboardCard, goalsDashboardCard, sessionsDashboardCard);
+    mainContent.append(Dashcontainer);
 }
 dashboard.addEventListener("click", () => {
     dashboardFunction();
@@ -223,6 +227,8 @@ taskManager.addEventListener("click", () => {
     mainHead.textContent = "Task Manager";
     mainContent.innerHTML = "";
     container.innerHTML = "";
+    container.classList.remove("goalContainer");
+
     function showTasks() {
         tasks.forEach((a) => {
             AddtoDOM(a);
@@ -245,18 +251,18 @@ taskManager.addEventListener("click", () => {
     errorMsg.classList.add("errorMsg");
     addTaskBtn1.classList.add("Btn");
     function validation(x) {
-        // if (x.name.trim() == "") {
-        //     errorMsg.textContent = "Name cannot be empty";
-        //     return -1;
-        // }
-        // if (document.querySelector('input[name="priority"]:checked') == null) {
-        //     errorMsg.textContent = "Select Priority";
-        //     return -1;
-        // }
-        // if (x.date.trim() == "") {
-        //     errorMsg.textContent = "Date cannot be empty";
-        //     return -1;
-        // }
+        if (x.name.trim() == "") {
+            errorMsg.textContent = "Name cannot be empty";
+            return -1;
+        }
+        if (document.querySelector('input[name="priority"]:checked') == null) {
+            errorMsg.textContent = "Select Priority";
+            return -1;
+        }
+        if (x.date.trim() == "") {
+            errorMsg.textContent = "Date cannot be empty";
+            return -1;
+        }
     }
 
     goTask.addEventListener("click", () => { // In case if value is entered without a keyboard
@@ -278,7 +284,10 @@ taskManager.addEventListener("click", () => {
     })
     if (!taskShown) {
         const functionalities = document.createElement("div");
-        functionalities.append(searchBox, goTask, addTaskBtn1);
+        const functionalitiespart = document.createElement("div");
+        functionalitiespart.classList.add("functionalitiespart");
+        functionalitiespart.append(goTask, addTaskBtn1)
+        functionalities.append(searchBox, functionalitiespart);
         functionalities.classList.add("functionalities");
         mainContent.append(functionalities);
 
@@ -304,6 +313,7 @@ taskManager.addEventListener("click", () => {
         const label1 = document.createElement("label");
         label1.textContent = "Task Name: "
         const input1 = document.createElement("input");
+        input1.type = "text";
         input1.placeholder = "Enter Name";
         div1.append(label1, input1);
 
@@ -377,9 +387,9 @@ taskManager.addEventListener("click", () => {
             // VALIDATION ***********
             let task = {
                 id: task_id,
-                name: input1.value,
-                status: document.querySelector("#selectingStatus").value,
-                date: input6.value
+                name: input1.value.trim(),
+                status: document.querySelector("#selectingStatus").value.trim(),
+                date: input6.value.trim()
 
             }
 
@@ -482,6 +492,7 @@ taskManager.addEventListener("click", () => {
             const label1 = document.createElement("label");
             label1.textContent = "Task Name: "
             const input1 = document.createElement("input");
+            input1.type = "text";
             input1.value = x.name;
             div1.append(label1, input1);
 
@@ -570,7 +581,7 @@ taskManager.addEventListener("click", () => {
             UpdateBtn.addEventListener("click", () => { //should have used forms but would need to change a lot
                 const updIndex = tasks.findIndex((a) => a.id == UpdateBtn.dataset.id);
                 const updObj = {
-                    name: input1.value,
+                    name: input1.value.trim(),
                     status: input5.value,
                     date: input6.value
 
@@ -646,6 +657,8 @@ sessionTracker.addEventListener("click", () => {
     mainHead.textContent = "Session Tracker";
     mainContent.innerHTML = "";
     container.innerHTML = "";
+    container.classList.remove("goalContainer");
+
 
     function showSessions() {
         sessions.forEach((a) => {
@@ -669,18 +682,22 @@ sessionTracker.addEventListener("click", () => {
     errorMsg.classList.add("errorMsg");
     addSessionsBtn1.classList.add("Btn");
     function sessionValidation(x) {
-        // if (x.name.trim() == "") {
-        //     errorMsg.textContent = "Name cannot be empty";
-        //     return -1;
-        // }
-        // if (document.querySelector('input[name="priority"]:checked') == null) {
-        //     errorMsg.textContent = "Select Priority";
-        //     return -1;
-        // }
-        // if (x.date.trim() == "") {
-        //     errorMsg.textContent = "Date cannot be empty";
-        //     return -1;
-        // }
+        if (x.name.trim() == "") {
+            errorMsg.textContent = "Name cannot be empty";
+            return -1;
+        }
+        if (x.Stime.trim() == "") {
+            errorMsg.textContent = "Start Time cannot be empty";
+            return -1;
+        }
+        if (x.Etime.trim() == "") {
+            errorMsg.textContent = "End Time cannot be empty";
+            return -1;
+        }
+        if (x.date.trim() == "") {
+            errorMsg.textContent = "Date cannot be empty";
+            return -1;
+        }
     }
 
     goSessions.addEventListener("click", () => { // In case if value is entered without a keyboard
@@ -703,7 +720,10 @@ sessionTracker.addEventListener("click", () => {
     })
     if (!sessionshown) {
         const functionalities = document.createElement("div");
-        functionalities.append(searchBox, goSessions, addSessionsBtn1);
+        const functionalitiespart = document.createElement("div");
+        functionalitiespart.classList.add("functionalitiespart");
+        functionalitiespart.append(goSessions, addSessionsBtn1);
+        functionalities.append(searchBox, functionalitiespart);
         functionalities.classList.add("functionalities");
         mainContent.append(functionalities);
 
@@ -729,6 +749,7 @@ sessionTracker.addEventListener("click", () => {
         const label1 = document.createElement("label");
         label1.textContent = "Session Name: "
         const input1 = document.createElement("input");
+        input1.type = "text";
         input1.placeholder = "Enter Name";
         div1.append(label1, input1);
 
@@ -781,13 +802,16 @@ sessionTracker.addEventListener("click", () => {
             // VALIDATION ***********
             let session = {
                 id: session_id,
-                name: input1.value,
+                name: input1.value.trim(),
                 Stime: input2.value,
                 Etime: input3.value,
                 status: input5.value,
                 date: input6.value
 
             };
+            if (sessionValidation(session) == -1) {
+                return;
+            }
             session.duration = (Number(input3.value.substring(0, 2)) - Number(input2.value.substring(0, 2))) * 60 + (Number(input3.value.substring(3, 5)) - Number(input2.value.substring(3, 5)));
             if (session.duration < 0) {
                 session.duration += 1440;
@@ -796,12 +820,7 @@ sessionTracker.addEventListener("click", () => {
             // console.log(session.duration);
 
 
-            if (sessionValidation(session) == -1) {
-                return;
-            }
-            // session.priority = document.querySelector('input[name="priority"]:checked').value;
 
-            // console.log(document.querySelector('input[name="priority"]:checked').value);
             sessions.push(session);
             addSessionsLocalStorage()
             AddtoDOM(session);
@@ -893,6 +912,7 @@ sessionTracker.addEventListener("click", () => {
             const label1 = document.createElement("label");
             label1.textContent = "Session Name: "
             const input1 = document.createElement("input");
+            input1.type = "text";
             input1.value = x.name;
             div1.append(label1, input1);
 
@@ -953,7 +973,7 @@ sessionTracker.addEventListener("click", () => {
             UpdateBtn.addEventListener("click", () => { //should have used forms but would need to change a lot
                 const updIndex = sessions.findIndex((a) => a.id == UpdateBtn.dataset.id);
                 const updSession = {
-                    name: input1.value,
+                    name: input1.value.trim(),
                     Stime: input2.value,
                     Etime: input3.value,
                     status: input5.value,
@@ -966,10 +986,9 @@ sessionTracker.addEventListener("click", () => {
                 }
 
 
-                // if (sessionValidation(updSession) == -1) {
-
-                //     return;
-                // }
+                if (sessionValidation(updSession) == -1) {
+                    return;
+                }
 
                 // ************validation
                 sessions[updIndex].name = updSession.name;
@@ -1032,22 +1051,22 @@ goalTable.classList.add("goalTable");
 
 //***************************** Daily Goals *****************************
 let goalsShown = false;
-    function allotGoals() {
-        let tempChecked = document.querySelectorAll('input[name="goalChecker"]:checked');
-        tempChecked = [...tempChecked].map((a) => Number(a.dataset.id));
-        goals.forEach((a) => { if (tempChecked.includes(a.id)) { a.status = true } });
-        goalsChecked = goals.filter((a) => a.status == true);
+function allotGoals() {
+    let tempChecked = document.querySelectorAll('input[name="goalChecker"]:checked');
+    tempChecked = [...tempChecked].map((a) => Number(a.dataset.id));
+    goals.forEach((a) => { if (tempChecked.includes(a.id)) { a.status = true } });
+    goalsChecked = goals.filter((a) => a.status == true);
 
 
-        let tempNotChecked = document.querySelectorAll('input[name="goalChecker"]:not(:checked)');
-        tempNotChecked = [...tempNotChecked].map((a) => Number(a.dataset.id));
-        goals.forEach((a) => { if (tempNotChecked.includes(a.id)) { a.status = false } });
-        goalsNotChecked = goals.filter((a) => a.status == false);
+    let tempNotChecked = document.querySelectorAll('input[name="goalChecker"]:not(:checked)');
+    tempNotChecked = [...tempNotChecked].map((a) => Number(a.dataset.id));
+    goals.forEach((a) => { if (tempNotChecked.includes(a.id)) { a.status = false } });
+    goalsNotChecked = goals.filter((a) => a.status == false);
 
-        // console.log(goalsChecked);
+    // console.log(goalsChecked);
 
-        // console.log(goalsNotChecked);
-    }
+    // console.log(goalsNotChecked);
+}
 // FILTERRRRRRR -> completed not completed
 dailyGoals.addEventListener("click", () => {
     dashboard.style.textDecoration = "none";
@@ -1057,10 +1076,10 @@ dailyGoals.addEventListener("click", () => {
     mainHead.textContent = "Daily Goals";
     mainContent.innerHTML = "";
     container.innerHTML = "";
-
+    container.classList.add("goalContainer");
     function showSessions() {
         container.append(goalTable);
-        goalTable.innerHTML="";
+        goalTable.innerHTML = "";
         goals.forEach((a) => {
             AddtoDOM(a);
             goalsShown = true;
@@ -1093,12 +1112,12 @@ dailyGoals.addEventListener("click", () => {
     function resetGoals() {
         const timer = new Date();
         timeResetDiv.classList.toggle("red")
-        if (timer.getHours() == 0 && timer.getMinutes() == 0 && timer.getSeconds() == 0) {
+        if (timer.getHours() == 0 && timer.getMinutes() == 0 && timer.getSeconds() <= 10) {//cannot able to refresh at exact zero
             goals.forEach((a) => a.status = false);
             allotGoals();
             addGoalsLocalStorage();
         }
-        let time = `Resets in: ${(23 - timer.getHours() > 9)?(23 - timer.getHours()): "0"+(23 - timer.getHours()) }:${(59 - timer.getMinutes() > 9)?(59 - timer.getMinutes()): "0"+(59 - timer.getMinutes())}:${(59 - timer.getSeconds()>9)?(59 - timer.getSeconds()): "0"+(59 - timer.getSeconds())}`;
+        let time = `Resets in: ${(23 - timer.getHours() > 9) ? (23 - timer.getHours()) : "0" + (23 - timer.getHours())}:${(59 - timer.getMinutes() > 9) ? (59 - timer.getMinutes()) : "0" + (59 - timer.getMinutes())}:${(59 - timer.getSeconds() > 9) ? (59 - timer.getSeconds()) : "0" + (59 - timer.getSeconds())}`;
         timeResetDiv.textContent = time;
     }
     resetGoals();
@@ -1126,24 +1145,22 @@ dailyGoals.addEventListener("click", () => {
     })
 
     function goalValidation(x) {
-        // if (x.name.trim() == "") {
-        //     errorMsg.textContent = "Name cannot be empty";
-        //     return -1;
-        // }
-        // if (document.querySelector('input[name="priority"]:checked') == null) {
-        //     errorMsg.textContent = "Select Priority";
-        //     return -1;
-        // }
-        // if (x.date.trim() == "") {
-        //     errorMsg.textContent = "Date cannot be empty";
-        //     return -1;
-        // }
+        if (x.name.trim() == "") {
+            errorMsg.textContent = "Name cannot be empty";
+            return -1;
+        }
     }
     if (!goalsShown) {
         const functionalities = document.createElement("div");
-        functionalities.append(addGoalsBtn1, filterGoals, timeResetDiv);
+        const functionalitiespart = document.createElement("div");
+        functionalitiespart.classList.add("functionalitiespart");
+        const scrollOp = document.createElement("div");
+        scrollOp.textContent = "{<- Scroll ->}";
+        scrollOp.classList.add("scrollOp");
+        functionalitiespart.append(addGoalsBtn1, filterGoals, timeResetDiv);
+        functionalities.append(functionalitiespart);
         functionalities.classList.add("functionalities");
-        mainContent.append(functionalities);
+        mainContent.append(functionalities, scrollOp);
 
         mainContent.append(container);
     }
@@ -1161,6 +1178,7 @@ dailyGoals.addEventListener("click", () => {
         const label1 = document.createElement("label");
         label1.textContent = "Goal Name: "
         const input1 = document.createElement("input");
+        input1.type = "text";
         input1.placeholder = "Enter Name";
         div1.append(label1, input1);
 
@@ -1176,16 +1194,14 @@ dailyGoals.addEventListener("click", () => {
             // VALIDATION ***********
             let goal = {
                 id: ++goal_id,
-                name: input1.value,
+                name: input1.value.trim(),
                 status: false
             };
 
             if (goalValidation(goal) == -1) {
                 return;
             }
-            // session.priority = document.querySelector('input[name="priority"]:checked').value;
 
-            // console.log(document.querySelector('input[name="priority"]:checked').value);
             goals.push(goal);
             addGoalsLocalStorage();
             AddtoDOM(goal);
@@ -1258,6 +1274,7 @@ dailyGoals.addEventListener("click", () => {
             label1.textContent = "Goal Name: "
             const input1 = document.createElement("input");
             input1.placeholder = "Enter Name";
+            input1.type = "text";
             input1.value = x.name;
             div1.append(label1, input1);
 
@@ -1273,15 +1290,14 @@ dailyGoals.addEventListener("click", () => {
             UpdateBtn.addEventListener("click", () => { //should have used forms but would need to change a lot
                 const updIndex = goals.findIndex((a) => a.id == UpdateBtn.dataset.id);
                 const updGoal = {
-                    name: input1.value,
+                    name: input1.value.trim(),
                 };
 
 
 
-                // if (goalsValidation(updSession) == -1) {
-
-                //     return;
-                // }
+                if (goalValidation(updGoal) == -1) {
+                    return;
+                }
 
                 // ************validation
                 goals[updIndex].name = updGoal.name;
