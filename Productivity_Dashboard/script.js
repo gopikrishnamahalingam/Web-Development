@@ -827,273 +827,296 @@ goalTable.classList.add("goalTable");
 
 //***************************** Daily Goals *****************************
 const goals = [];
+let goalsChecked = [];
+let goalsNotChecked = [];
+let goal_id = 0;
 let goalsShown = false;
 // FILTERRRRRRR -> completed not completed
-// dailyGoals.addEventListener("click", () => {
-    dashboard.style.textDecoration = "none";
-    sessionTracker.style.textDecoration = "none";
-    dailyGoals.style.textDecoration = "Underline";
-    taskManager.style.textDecoration = "none";
-    mainHead.textContent = "Daily Goals";
-    mainContent.innerHTML = "";
-    container.innerHTML = "";
+dailyGoals.addEventListener("click", () => {
+dashboard.style.textDecoration = "none";
+sessionTracker.style.textDecoration = "none";
+dailyGoals.style.textDecoration = "Underline";
+taskManager.style.textDecoration = "none";
+mainHead.textContent = "Daily Goals";
+mainContent.innerHTML = "";
+container.innerHTML = "";
 
-    function showSessions() {
-        goals.forEach((a) => {
-            AddtoDOM(a);
-            goalsShown = true;
-        })
-    }
-    if (mainContent.innerHTML == "") {
-        goalsShown = false;;
-    }
+function showSessions() {
+    container.append(goalTable);
+    goals.forEach((a) => {
+        AddtoDOM(a);
+        goalsShown = true;
+    })
+}
+if (mainContent.innerHTML == "") {
+    goalsShown = false;;
+}
 
-    //Functionalities
-    const addGoalsBtn1 = document.createElement("button");
-    addGoalsBtn1.textContent = "Add";
-    const errorMsg = document.createElement("p");
-    errorMsg.classList.add("errorMsg");
-    addGoalsBtn1.classList.add("Btn");
-    function goalValidation(x) {
-        // if (x.name.trim() == "") {
-        //     errorMsg.textContent = "Name cannot be empty";
-        //     return -1;
-        // }
-        // if (document.querySelector('input[name="priority"]:checked') == null) {
-        //     errorMsg.textContent = "Select Priority";
-        //     return -1;
-        // }
-        // if (x.date.trim() == "") {
-        //     errorMsg.textContent = "Date cannot be empty";
-        //     return -1;
-        // }
-    }
-    if (!goalsShown) {
-        const functionalities = document.createElement("div");
-        functionalities.append(addGoalsBtn1);
-        functionalities.classList.add("functionalities");
-        mainContent.append(functionalities);
+//Functionalities
+// Add Button
+const addGoalsBtn1 = document.createElement("button");
+addGoalsBtn1.textContent = "Add";
+const errorMsg = document.createElement("p");
+errorMsg.classList.add("errorMsg");
+addGoalsBtn1.classList.add("Btn");
+// Filter
+const filterGoals = document.createElement("select");
+const defaultGoals = document.createElement("option");
+defaultGoals.textContent = "Default";
+const checkedGoalsFilter = document.createElement("option");
+checkedGoalsFilter.textContent = "Completed";
+const uncheckedGoalsFilter = document.createElement("option");
+uncheckedGoalsFilter.textContent = "Remaining";
+filterGoals.append(defaultGoals, checkedGoalsFilter, uncheckedGoalsFilter);
+filterGoals.classList.add("filterGoals");
 
-        mainContent.append(container);
+const timeResetDiv = document.createElement("div");
+function resetGoals(){
+    const timer = new Date();
+    timeResetDiv.classList.toggle("red")
+    if(timer.getHours()==0 && timer.getMinutes()==0 && timer.getSeconds()==0){
+        goals.forEach((a)=> a.status = false);
     }
-    showSessions();
+    let time = `Resets in: ${23-timer.getHours()}:${59-timer.getMinutes()}:${59-timer.getSeconds()}`;
+    timeResetDiv.textContent = time;
+}
+resetGoals();
+setInterval(resetGoals,1000);
+// timeFunction();
 
-    addGoalsBtn1.addEventListener("click", () => {
-        const addDialog = document.createElement("dialog");
-        addDialog.classList.add("Dialog");
-        addDialog.classList.add("GoalDialog");
+
+filterGoals.addEventListener("change", () => {
+    allotGoals();
+    goalTable.innerHTML = "";
+    console.log("1");
+
+    switch (filterGoals.value) {
+        case "Default": {
+            console.log("2");
+            goals.forEach((a) => AddtoDOM(a));
+            break;
+        }
+        case "Completed": {
+            console.log("workign");
+            goalsChecked.forEach((a) => AddtoDOM(a));
+            console.log("workigntoo");
+            break;
+        }
+        case "Remaining": {
+            console.log("2");
+            goalsNotChecked.forEach((a) => AddtoDOM(a));
+            break;
+        }
+    }
+    console.log("3");
+})
+
+function goalValidation(x) {
+    // if (x.name.trim() == "") {
+    //     errorMsg.textContent = "Name cannot be empty";
+    //     return -1;
+    // }
+    // if (document.querySelector('input[name="priority"]:checked') == null) {
+    //     errorMsg.textContent = "Select Priority";
+    //     return -1;
+    // }
+    // if (x.date.trim() == "") {
+    //     errorMsg.textContent = "Date cannot be empty";
+    //     return -1;
+    // }
+}
+if (!goalsShown) {
+    const functionalities = document.createElement("div");
+    functionalities.append(addGoalsBtn1, filterGoals,timeResetDiv);
+    functionalities.classList.add("functionalities");
+    mainContent.append(functionalities);
+
+    mainContent.append(container);
+}
+showSessions();
+
+addGoalsBtn1.addEventListener("click", () => {
+    const addDialog = document.createElement("dialog");
+    addDialog.classList.add("Dialog");
+    addDialog.classList.add("GoalDialog");
+
+    const head = document.createElement("h2");
+    head.textContent = "Add Goal";
+
+    const div1 = document.createElement("div");
+    const label1 = document.createElement("label");
+    label1.textContent = "Goal Name: "
+    const input1 = document.createElement("input");
+    input1.placeholder = "Enter Name";
+    div1.append(label1, input1);
+
+    const div9 = document.createElement("div");
+    div9.classList.add("BtnDiv");
+    const addBtn = document.createElement("button");
+    const closeBtn = document.createElement("button");
+    addBtn.classList.add("Btn");
+    closeBtn.classList.add("Btn");
+    addBtn.textContent = "Add";
+
+    addBtn.addEventListener("click", () => {
+        // VALIDATION ***********
+        let goal = {
+            id: ++goal_id,
+            name: input1.value,
+            status: false
+        };
+
+        if (goalValidation(goal) == -1) {
+            return;
+        }
+        // session.priority = document.querySelector('input[name="priority"]:checked').value;
+
+        // console.log(document.querySelector('input[name="priority"]:checked').value);
+        goals.push(goal);
+        AddtoDOM(goal);
+        console.log(goals);
+        errorMsg.textContent = "";
+        addDialog.remove();
+
+
+    })
+
+    closeBtn.textContent = "Close";
+    div9.append(addBtn, closeBtn);
+
+    closeBtn.addEventListener("click", () => {
+        addDialog.remove();
+        errorMsg.textContent = "";
+    })
+
+    addDialog.append(head, div1, div9, errorMsg);
+
+
+    document.body.append(addDialog);
+    addDialog.showModal();
+});
+function allotGoals() {
+    let tempChecked = document.querySelectorAll('input[name="goalChecker"]:checked');
+    tempChecked = [...tempChecked].map((a) => Number(a.dataset.id));
+    goals.forEach((a) => { if (tempChecked.includes(a.id)) { a.status = true } });
+    goalsChecked = goals.filter((a) => a.status == true);
+
+
+    let tempNotChecked = document.querySelectorAll('input[name="goalChecker"]:not(:checked)');
+    tempNotChecked = [...tempNotChecked].map((a) => Number(a.dataset.id));
+    goals.forEach((a) => { if (tempNotChecked.includes(a.id)) { a.status = false } });
+    goalsNotChecked = goals.filter((a) => a.status == false);
+
+    console.log(goalsChecked);
+
+    console.log(goalsNotChecked);
+}
+
+
+//     // ADD TO DOM *************************************
+function AddtoDOM(x) {
+    const row = document.createElement("tr");
+    row.dataset.id = x.id;
+
+    const td1 = document.createElement("td");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.name = "goalChecker";
+    checkbox.checked = false;
+    if (x.status) {
+        checkbox.checked = true;
+    }
+    checkbox.dataset.id = x.id;
+    const div2 = document.createElement("div");
+    div2.textContent = x.name;
+    td1.append(checkbox, div2);
+
+    const UpdBtn = document.createElement("button");
+    UpdBtn.textContent = "Update";
+    UpdBtn.classList.add("Btn");
+    const td2 = document.createElement("td");
+    td2.classList.add("GoalBtnDiv")
+    td2.append(UpdBtn);
+
+    UpdBtn.addEventListener("click", () => {
+        const updDialog = document.createElement("dialog");
+        updDialog.classList.add("Dialog");
+        updDialog.classList.add("GoalDialog");
+
 
         const head = document.createElement("h2");
-        head.textContent = "Add Goal";
-    
+        head.textContent = "Update Goal";
+
         const div1 = document.createElement("div");
         const label1 = document.createElement("label");
         label1.textContent = "Goal Name: "
         const input1 = document.createElement("input");
         input1.placeholder = "Enter Name";
+        input1.value = x.name;
         div1.append(label1, input1);
 
         const div9 = document.createElement("div");
         div9.classList.add("BtnDiv");
-        const addBtn = document.createElement("button");
+        const UpdateBtn = document.createElement("button");
         const closeBtn = document.createElement("button");
-        addBtn.classList.add("Btn");
+        UpdateBtn.classList.add("Btn");
         closeBtn.classList.add("Btn");
-        addBtn.textContent = "Add";
+        UpdateBtn.textContent = "Update";
+        UpdateBtn.dataset.id = x.id;
 
-        addBtn.addEventListener("click", () => {
-            // VALIDATION ***********
-            let goal = {
+        UpdateBtn.addEventListener("click", () => { //should have used forms but would need to change a lot
+            const updIndex = goals.findIndex((a) => a.id == UpdateBtn.dataset.id);
+            const updGoal = {
                 name: input1.value,
             };
 
-            if (goalValidation(goal) == -1) {
-                return;
-            }
-            // session.priority = document.querySelector('input[name="priority"]:checked').value;
 
-            // console.log(document.querySelector('input[name="priority"]:checked').value);
-            goals.push(goal);
-            AddtoDOM(goal);
-            console.log(goals);
+
+            // if (goalsValidation(updSession) == -1) {
+
+            //     return;
+            // }
+
+            // ************validation
+            goals[updIndex].name = updGoal.name;
+
+            div2.textContent = updGoal.name;
+
             errorMsg.textContent = "";
-            addDialog.remove();
-
-
+            updDialog.remove();
         })
 
         closeBtn.textContent = "Close";
-        div9.append(addBtn, closeBtn);
+        div9.append(UpdateBtn, closeBtn);
 
         closeBtn.addEventListener("click", () => {
-            addDialog.remove();
             errorMsg.textContent = "";
+            updDialog.remove();
         })
-
-        addDialog.append(head, div1, div9, errorMsg);
-
-
-        document.body.append(addDialog);
-        addDialog.showModal();
-    });
-    //     // ADD TO DOM *************************************
-    function AddtoDOM(x) {
-        const row = document.createElement("tr");
-
-        const td1 = document.createElement("td");
-        td1.textContent = x.name;
-
-        const div15 = document.createElement("div");
-        div15.classList.add("BtnDiv");
-        const UpdBtn = document.createElement("button");
-        UpdBtn.textContent = "Update";
-        UpdBtn.classList.add("Btn");
-
-//         UpdBtn.addEventListener("click", () => {
-//             const updDialog = document.createElement("dialog");
-//             updDialog.classList.add("Dialog");
-
-//             const head = document.createElement("h2");
-//             head.textContent = "Update Session";
+        updDialog
+        updDialog.append(head, div1, div9, errorMsg);
 
 
-//             const div16 = document.createElement("div");
-//             const label18 = document.createElement("label");
-//             label18.textContent = "Session ID: "
-//             const label19 = document.createElement("label");
-//             label19.textContent = x.id;
-//             div16.append(label18, label19);
+        document.body.append(updDialog);
+        updDialog.showModal();
+    })
 
-//             const div1 = document.createElement("div");
-//             const label1 = document.createElement("label");
-//             label1.textContent = "Session Name: "
-//             const input1 = document.createElement("input");
-//             input1.value = x.name;
-//             div1.append(label1, input1);
+    const DelBtn = document.createElement("button");
+    DelBtn.textContent = "Delete";
+    DelBtn.classList.add("Btn");
+    DelBtn.dataset.id = x.id;
+    td2.append(UpdBtn, DelBtn);
 
-
-//             const div2 = document.createElement("div");
-//             const label2 = document.createElement("label");
-//             label2.textContent = "Time: "
-
-//             const input2 = document.createElement("input");
-//             input2.type = "time";
-//             input2.value = x.Stime;
-//             const label3 = document.createElement("label");
-//             label3.textContent = " to "
-//             const input3 = document.createElement("input");
-//             input3.type = "time";
-//             input3.value = x.Etime;
-
-//             const div3 = document.createElement("div");
-//             div3.append(input2, label3, input3);
-//             div2.append(label2, div3);
+    DelBtn.addEventListener("click", () => {
+        goals.splice(goals.findIndex((a) => a.id == DelBtn.dataset.id), 1);
+        const delTaskArray = document.querySelectorAll(`[data-id="${DelBtn.dataset.id}"]`);
+        delTaskArray[0].remove();
+    })
 
 
-//             const div7 = document.createElement("div");
-//             const label6 = document.createElement("label");
-//             label6.textContent = "Status:";
-//             const input5 = document.createElement("select");
-//             input5.id = "selectingStatus";
-//             const option1 = document.createElement("option");
-//             option1.textContent = "Pending";
-//             option1.value = "Pending";
-//             const option2 = document.createElement("option");
-//             option2.textContent = "Completed";
-//             option2.value = "Completed";
-//             input5.append(option1, option2);
-//             div7.append(label6, input5);
+    row.append(td1, td2);
+    goalTable.append(row);
+}
 
-//             input5.value = x.status;
-
-
-//             const div8 = document.createElement("div");
-//             const label7 = document.createElement("label");
-//             label7.textContent = "Deadline:";
-//             const input6 = document.createElement("input");
-//             input6.type = "date";
-//             input6.value = x.date;
-//             div8.append(label7, input6);
-
-
-//             const div9 = document.createElement("div");
-//             div9.classList.add("BtnDiv");
-//             const UpdateBtn = document.createElement("button");
-//             const closeBtn = document.createElement("button");
-//             UpdateBtn.classList.add("Btn");
-//             closeBtn.classList.add("Btn");
-//             UpdateBtn.textContent = "Update";
-//             UpdateBtn.dataset.id = x.id;
-
-//             UpdateBtn.addEventListener("click", () => { //should have used forms but would need to change a lot
-//                 const updIndex = sessions.findIndex((a) => a.id == UpdateBtn.dataset.id);
-//                 const updSession = {
-//                     name: input1.value,
-//                     Stime: input2.value,
-//                     Etime: input3.value,
-//                     status: input5.value,
-//                     date: input6.value
-//                 };
-
-//                 updSession.duration = (Number(input3.value.substring(0, 2)) - Number(input2.value.substring(0, 2))) * 60 + (Number(input3.value.substring(3, 5)) - Number(input2.value.substring(3, 5)));
-//                 if (updSession.duration < 0) {
-//                     updSession.duration += 1440;
-//                 }
-
-
-//                 // if (sessionValidation(updSession) == -1) {
-
-//                 //     return;
-//                 // }
-
-//                 // ************validation
-//                 sessions[updIndex].name = updSession.name;
-//                 sessions[updIndex].Stime = updSession.Stime;
-//                 sessions[updIndex].Etime = updSession.Etime;
-//                 sessions[updIndex].duration = updSession.duration;
-//                 sessions[updIndex].status = updSession.status;
-//                 sessions[updIndex].date = updSession.date;
-
-//                 label11.textContent = updSession.name;
-//                 label13.textContent = updSession.duration;
-//                 label15.textContent = updSession.status
-//                 label17.textContent = updSession.date
-
-//                 errorMsg.textContent = "";
-//                 updDialog.remove();
-//             })
-
-//             closeBtn.textContent = "Close";
-//             div9.append(UpdateBtn, closeBtn);
-
-//             closeBtn.addEventListener("click", () => {
-//                 errorMsg.textContent = "";
-//                 updDialog.remove();
-//             })
-//             updDialog
-//             updDialog.append(head, div16, div1, div2, div7, div8, div9, errorMsg);
-
-
-//             document.body.append(updDialog);
-//             updDialog.showModal();
-//         })
-
-//         const DelBtn = document.createElement("button");
-//         DelBtn.textContent = "Delete";
-//         DelBtn.classList.add("Btn");
-//         DelBtn.dataset.id = x.id;
-//         div15.append(UpdBtn, DelBtn);
-
-//         DelBtn.addEventListener("click", () => {
-//             sessions.splice(sessions.findIndex((a) => a.id == DelBtn.dataset.id), 1);
-//             const delTaskArray = document.querySelectorAll(`[data-id="${DelBtn.dataset.id}"]`);
-//             delTaskArray[0].remove();
-//         })
-
-
-//         card.append(div10, div11, div12, div13, div14, div15);
-//         container.append(card);
-//     }
-
-};
+});
 

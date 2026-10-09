@@ -5,8 +5,12 @@
 
 :root {
     --asideColor: lightblue;
+    --lightColor: rgb(198, 230, 241);
+    --bodyColor: rgb(225, 243, 250);
 }
-
+body{
+    background-color: var(--bodyColor);
+}
 /* Classic Button */
 .Btn {
     border: 1px solid black;
@@ -43,7 +47,7 @@
     /* padding: 2px; */
     width: 80vw;
     float: right;
-    padding: 30px;
+    padding: 20px 30px 0px 30px;
     box-sizing: border-box;
 
 }
@@ -94,21 +98,23 @@
 .Dialog input {
     font-size: medium;
 }
-.BtnDiv{
+
+.BtnDiv {
     margin: 0px 20%;
     display: flex;
     justify-content: space-around;
     font-size: larger;
 }
 
-.container{
+.container {
     display: flex;
     gap: 20px;
     margin: 20px 0px;
     flex-wrap: wrap;
-    max-height: 77vh;
+    max-height: 76vh;
     overflow-y: auto;
 }
+
 .card {
     display: flex;
     flex-direction: column;
@@ -120,18 +126,52 @@
     padding: 20px;
     border-radius: 20px;
 }
-.card .BtnDiv{
+
+.card .BtnDiv {
     margin: 2% 10%;
 }
 
-.errorMsg{
+.errorMsg {
     color: red;
     font-size: medium;
 }
+
 /* Daily Goal */
-.GoalDialog{
+.GoalDialog {
     height: 220px;
 }
-.goalTable{
-    
+
+.goalTable {
+    font-size: larger;
+}
+.goalTable tr:hover{
+    background-color: var(--lightColor);
+}
+.goalTable tr{
+    display: flex;
+}
+.goalTable td {
+    padding: 10px;
+    width: 300px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.GoalBtnDiv {
+    display: flex;
+    justify-content: right;
+    gap: 20px;
+    font-size: larger;
+}
+.red{
+    color: red;
+}
+.timeResetDiv{
+    float: right;
+}
+.filterGoals{
+    font-size: larger;
+    padding: 4px;
+    border: 1px solid black;
 }
