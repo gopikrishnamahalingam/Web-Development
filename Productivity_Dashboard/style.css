@@ -203,6 +203,7 @@ body {
     padding: 20px;
     box-sizing: border-box;
     border: 2px dashed black;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 20px;

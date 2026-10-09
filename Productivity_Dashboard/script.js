@@ -8,17 +8,35 @@ const mainContent = document.querySelector(".mainContent");
 const container = document.createElement("div");
 container.classList.add("container");
 
-const tasks = [];
-const sessions = [];
-const goals = [];
+function addTasksLocalStorage(){
+    localStorage.setItem("Tasks",JSON.stringify(tasks));
+    localStorage.setItem("Tasks_id",task_id);
+}
+function addSessionsLocalStorage(){
+    localStorage.setItem("Sessions",JSON.stringify(sessions));
+    localStorage.setItem("Sessions_id",session_id);
+}
+function addGoalsLocalStorage(){
+    localStorage.setItem("Goals",JSON.stringify(goals));
+    localStorage.setItem("Goals_id",goal_id);
+}
+
+
+const tasks = JSON.parse(localStorage.getItem("Tasks")) || [];
+const sessions = JSON.parse(localStorage.getItem("Sessions")) || [];
+const goals = JSON.parse(localStorage.getItem("Goals")) || [];
 let goalsChecked = [];
 let goalsNotChecked = [];
+allotGoals();
 
-let task_id = 0;
-let session_id = 0;
+let task_id = JSON.parse(localStorage.getItem("Tasks_id")) || 0;
+let session_id = JSON.parse(localStorage.getItem("Sessions_id")) || 0;
+let goal_id = JSON.parse(localStorage.getItem("Goals_id")) || 0;
+
 
 dashboardFunction();
 function dashboardFunction() {
+    allotGoals();
     dashboard.style.textDecoration = "Underline";
     sessionTracker.style.textDecoration = "none";
     dailyGoals.style.textDecoration = "none";
@@ -33,8 +51,8 @@ function dashboardFunction() {
     tasksDashboardCard.classList.add("DashboardCard");
     sessionsDashboardCard.classList.add("DashboardCard");
     goalsDashboardCard.classList.add("DashboardCard");
-
-
+    
+    
     tasksDashboardFunction();
     function tasksDashboardFunction() {
         const tasksHeading = document.createElement("h2");
@@ -43,52 +61,152 @@ function dashboardFunction() {
         tasksDashboardCard.append(tasksHeading);
         const totalTasks = tasks.length;
         const completedTasks = tasks.filter((a)=>a.status=="Completed").length;
-
+        
         const div12 = document.createElement("div");
         const label12 = document.createElement("label");
         const label13 = document.createElement("label");
         label12.textContent = "Remaining Tasks: ";
         label13.textContent = totalTasks-completedTasks;
         div12.append(label12, label13);
-
+        
         const div11 = document.createElement("div");
         const label10 = document.createElement("label");
         const label11 = document.createElement("label");
         label10.textContent = "Completed Tasks: ";
         label11.textContent = completedTasks;
         div11.append(label10, label11);
-
+        
         const div10 = document.createElement("div");
         const label8 = document.createElement("label");
         const label9 = document.createElement("label");
         label8.textContent = "Total Tasks: ";
         label9.textContent = totalTasks;
         div10.append(label8, label9);
-
+        
         const div9 = document.createElement("div");
-        div9.classList.add("card");
+        div9.textContent = "Upcoming Tasks: "
+        tasksDashboardCard.append(tasksHeading,div10,div11,div12,div9);
+        
         const d = new Date();
         let date = d.getDate();
         if(date<10){
             date = "0"+date;
         }
-        let month = d.getMonth+1;
+        let month = d.getMonth()+1;
         if(month<10){
             month="0"+month;
         }
-        console.log(d.getMonth());
+        const todaysDate = `${d.getFullYear()}-${month}-${date}`;
+        // console.log(todaysDate);
+        let upcomingTasks = tasks;
+        upcomingTasks = tasks.filter((a)=>a.date == todaysDate);
+        if(upcomingTasks.length < 3){
+            upcomingTasks = [...tasks].sort((a,b)=>a.date.localeCompare(b.date)).filter((a)=>a.date >= todaysDate);
+        }
+        for(let i=0; i<3 && i<upcomingTasks.length; i++){
+                const card = document.createElement("div");
+                card.classList.add("card");
+                const div1 = document.createElement("div");
+                div1.textContent=`Task Name: ${upcomingTasks[i].name}`;
+                const div2 = document.createElement("div");
+                div2.textContent=`Deadline: ${upcomingTasks[i].date}`;
+                card.append(div1,div2);
+                tasksDashboardCard.append(card);
+        }
+    }
+    
+    sessionsDashboardFunction();
+    function sessionsDashboardFunction() {
+        const sessionsHead = document.createElement("h2");
+        sessionsHead.textContent = "Sessions"
+        sessionsHead.classList.add("DashBoardCardHeads");
+        sessionsDashboardCard.append(sessionsHead);
+        const totalSessions = sessions.length;
+        const completedSessions = sessions.filter((a)=>a.status=="Completed").length;
         
-        const todaysDate = ``
-        // console.log(new Date().getDate());
+        const div12 = document.createElement("div");
+        const label12 = document.createElement("label");
+        const label13 = document.createElement("label");
+        label12.textContent = "Remaining Sessions: ";
+        label13.textContent = totalSessions-completedSessions;
+        div12.append(label12, label13);
         
+        const div11 = document.createElement("div");
+        const label10 = document.createElement("label");
+        const label11 = document.createElement("label");
+        label10.textContent = "Completed Sessions: ";
+        label11.textContent = completedSessions;
+        div11.append(label10, label11);
+        
+        const div10 = document.createElement("div");
+        const label8 = document.createElement("label");
+        const label9 = document.createElement("label");
+        label8.textContent = "Total Sessions: ";
+        label9.textContent = totalSessions;
+        div10.append(label8, label9);
+        
+        const div8 = document.createElement("div");
+        const label6 = document.createElement("label");
+        const label7 = document.createElement("label");
+        label6.textContent = "Total Duration: ";
+        label7.textContent = sessions.reduce((s,c)=>s=s+Number(c.duration),0)+" mins";
+        div8.append(label6, label7);
 
+        
+        const div9 = document.createElement("div");
+        div9.textContent = "Upcoming Sessions: "
+        sessionsDashboardCard.append(sessionsHead,div10,div11,div12,div8);
+        
+        // const d = new Date();
+        // let date = d.getDate();
+        // if(date<10){
+        //     date = "0"+date;
+        // }
+        // let month = d.getMonth()+1;
+        // if(month<10){
+        //     month="0"+month;
+        // }
+        // const todaysDate = `${d.getFullYear()}-${month}-${date}`;
+        // // console.log(todaysDate);
+        // let upcomingTasks = tasks;
+        // upcomingTasks = tasks.filter((a)=>a.date == todaysDate);
+        // if(upcomingTasks.length < 3){
+        //     upcomingTasks = [...tasks].sort((a,b)=>a.date.localeCompare(b.date)).filter((a)=>a.date >= todaysDate);
+        // }
+        // for(let i=0; i<3 && i<upcomingTasks.length; i++){
+        //         const card = document.createElement("div");
+        //         card.classList.add("card");
+        //         const div1 = document.createElement("div");
+        //         div1.textContent=`Task Name: ${upcomingTasks[i].name}`;
+        //         const div2 = document.createElement("div");
+        //         div2.textContent=`Deadline: ${upcomingTasks[i].date}`;
+        //         card.append(div1,div2);
+        //         tasksDashboardCard.append(card);
+        // }
+    }
+    
+    goalsDashboardFunction();
+    function goalsDashboardFunction() {
+        const goalsHead = document.createElement("h2");
+        goalsHead.textContent = "Daily Goals"
+        goalsHead.classList.add("DashBoardCardHeads");
+        const div1 = document.createElement("div");
+        div1.textContent = `Pending: ${goalsNotChecked.length}`
+        
+        const div2 = document.createElement("div");
+        div2.textContent = `Today's Goal Left:`
+        
+        goalsDashboardCard.append(goalsHead,div1,div2);
+        
+        goalsNotChecked.forEach((a)=>{
+            const div3 = document.createElement("div");
+            div3.textContent = "~ " + a.name;
+            goalsDashboardCard.append(div3);
 
-        // div
-
-       tasksDashboardCard.append(tasksHeading,div10,div11,div12);
+        })
     }
 
-    container.append(tasksDashboardCard, sessionsDashboardCard, goalsDashboardCard);
+    container.append(tasksDashboardCard, goalsDashboardCard, sessionsDashboardCard);
     mainContent.append(container);
 }
 dashboard.addEventListener("click", () => {
@@ -270,11 +388,12 @@ taskManager.addEventListener("click", () => {
             }
             task.priority = document.querySelector('input[name="priority"]:checked').value;
 
-            console.log(task);
+            // console.log(task);
             // console.log(document.querySelector('input[name="priority"]:checked').value);
             tasks.push(task);
+            addTasksLocalStorage();
             AddtoDOM(task);
-            console.log(tasks);
+            // console.log(tasks);
             errorMsg.textContent = "";
             addDialog.remove();
 
@@ -403,7 +522,7 @@ taskManager.addEventListener("click", () => {
             div3.append(div4, div5, div6);
             div2.append(label2, div3);
 
-            console.log(x.priority);
+            // console.log(x.priority);
             if (x.priority == "High") {
                 input4.checked = true;
             } else if (x.priority == "Medium") {
@@ -467,12 +586,14 @@ taskManager.addEventListener("click", () => {
                 tasks[updIndex].status = updObj.status;
                 tasks[updIndex].date = updObj.date;
 
+                addTasksLocalStorage();
+
                 label11.textContent = updObj.name;
                 label13.textContent = updObj.priority;
                 label15.textContent = updObj.status
                 label17.textContent = updObj.date
 
-                console.log(tasks);
+                // console.log(tasks);
                 errorMsg.textContent = "";
                 updDialog.remove();
             })
@@ -502,6 +623,7 @@ taskManager.addEventListener("click", () => {
             tasks.splice(tasks.findIndex((a) => a.id == DelBtn.dataset.id), 1);
             const delTaskArray = document.querySelectorAll(`[data-id="${DelBtn.dataset.id}"]`);
             delTaskArray[0].remove();
+            addTasksLocalStorage()
         })
 
 
@@ -671,7 +793,7 @@ sessionTracker.addEventListener("click", () => {
                 session.duration += 1440;
             }
 
-            console.log(session.duration);
+            // console.log(session.duration);
 
 
             if (sessionValidation(session) == -1) {
@@ -681,8 +803,9 @@ sessionTracker.addEventListener("click", () => {
 
             // console.log(document.querySelector('input[name="priority"]:checked').value);
             sessions.push(session);
+            addSessionsLocalStorage()
             AddtoDOM(session);
-            console.log(sessions);
+            // console.log(sessions);
             errorMsg.textContent = "";
             addDialog.remove();
 
@@ -856,6 +979,8 @@ sessionTracker.addEventListener("click", () => {
                 sessions[updIndex].status = updSession.status;
                 sessions[updIndex].date = updSession.date;
 
+                addSessionsLocalStorage()
+
                 label11.textContent = updSession.name;
                 label13.textContent = updSession.duration;
                 label15.textContent = updSession.status
@@ -890,6 +1015,7 @@ sessionTracker.addEventListener("click", () => {
             sessions.splice(sessions.findIndex((a) => a.id == DelBtn.dataset.id), 1);
             const delTaskArray = document.querySelectorAll(`[data-id="${DelBtn.dataset.id}"]`);
             delTaskArray[0].remove();
+            addSessionsLocalStorage();
         })
 
 
@@ -905,8 +1031,23 @@ const goalTable = document.createElement("table");
 goalTable.classList.add("goalTable");
 
 //***************************** Daily Goals *****************************
-let goal_id = 0;
 let goalsShown = false;
+    function allotGoals() {
+        let tempChecked = document.querySelectorAll('input[name="goalChecker"]:checked');
+        tempChecked = [...tempChecked].map((a) => Number(a.dataset.id));
+        goals.forEach((a) => { if (tempChecked.includes(a.id)) { a.status = true } });
+        goalsChecked = goals.filter((a) => a.status == true);
+
+
+        let tempNotChecked = document.querySelectorAll('input[name="goalChecker"]:not(:checked)');
+        tempNotChecked = [...tempNotChecked].map((a) => Number(a.dataset.id));
+        goals.forEach((a) => { if (tempNotChecked.includes(a.id)) { a.status = false } });
+        goalsNotChecked = goals.filter((a) => a.status == false);
+
+        // console.log(goalsChecked);
+
+        // console.log(goalsNotChecked);
+    }
 // FILTERRRRRRR -> completed not completed
 dailyGoals.addEventListener("click", () => {
     dashboard.style.textDecoration = "none";
@@ -919,6 +1060,7 @@ dailyGoals.addEventListener("click", () => {
 
     function showSessions() {
         container.append(goalTable);
+        goalTable.innerHTML="";
         goals.forEach((a) => {
             AddtoDOM(a);
             goalsShown = true;
@@ -953,8 +1095,10 @@ dailyGoals.addEventListener("click", () => {
         timeResetDiv.classList.toggle("red")
         if (timer.getHours() == 0 && timer.getMinutes() == 0 && timer.getSeconds() == 0) {
             goals.forEach((a) => a.status = false);
+            allotGoals();
+            addGoalsLocalStorage();
         }
-        let time = `Resets in: ${23 - timer.getHours()}:${59 - timer.getMinutes()}:${59 - timer.getSeconds()}`;
+        let time = `Resets in: ${(23 - timer.getHours() > 9)?(23 - timer.getHours()): "0"+(23 - timer.getHours()) }:${(59 - timer.getMinutes() > 9)?(59 - timer.getMinutes()): "0"+(59 - timer.getMinutes())}:${(59 - timer.getSeconds()>9)?(59 - timer.getSeconds()): "0"+(59 - timer.getSeconds())}`;
         timeResetDiv.textContent = time;
     }
     resetGoals();
@@ -964,27 +1108,21 @@ dailyGoals.addEventListener("click", () => {
     filterGoals.addEventListener("change", () => {
         allotGoals();
         goalTable.innerHTML = "";
-        console.log("1");
 
         switch (filterGoals.value) {
             case "Default": {
-                console.log("2");
                 goals.forEach((a) => AddtoDOM(a));
                 break;
             }
             case "Completed": {
-                console.log("workign");
                 goalsChecked.forEach((a) => AddtoDOM(a));
-                console.log("workigntoo");
                 break;
             }
             case "Remaining": {
-                console.log("2");
                 goalsNotChecked.forEach((a) => AddtoDOM(a));
                 break;
             }
         }
-        console.log("3");
     })
 
     function goalValidation(x) {
@@ -1049,8 +1187,9 @@ dailyGoals.addEventListener("click", () => {
 
             // console.log(document.querySelector('input[name="priority"]:checked').value);
             goals.push(goal);
+            addGoalsLocalStorage();
             AddtoDOM(goal);
-            console.log(goals);
+            // console.log(goals);
             errorMsg.textContent = "";
             addDialog.remove();
 
@@ -1071,22 +1210,7 @@ dailyGoals.addEventListener("click", () => {
         document.body.append(addDialog);
         addDialog.showModal();
     });
-    function allotGoals() {
-        let tempChecked = document.querySelectorAll('input[name="goalChecker"]:checked');
-        tempChecked = [...tempChecked].map((a) => Number(a.dataset.id));
-        goals.forEach((a) => { if (tempChecked.includes(a.id)) { a.status = true } });
-        goalsChecked = goals.filter((a) => a.status == true);
 
-
-        let tempNotChecked = document.querySelectorAll('input[name="goalChecker"]:not(:checked)');
-        tempNotChecked = [...tempNotChecked].map((a) => Number(a.dataset.id));
-        goals.forEach((a) => { if (tempNotChecked.includes(a.id)) { a.status = false } });
-        goalsNotChecked = goals.filter((a) => a.status == false);
-
-        // console.log(goalsChecked);
-
-        // console.log(goalsNotChecked);
-    }
 
 
     //     // ADD TO DOM *************************************
@@ -1109,6 +1233,7 @@ dailyGoals.addEventListener("click", () => {
 
         checkbox.addEventListener("change", () => {
             allotGoals();
+            addGoalsLocalStorage();
             // console.log(goalsNotChecked);
         })
 
@@ -1160,7 +1285,7 @@ dailyGoals.addEventListener("click", () => {
 
                 // ************validation
                 goals[updIndex].name = updGoal.name;
-
+                addGoalsLocalStorage();
                 div2.textContent = updGoal.name;
 
                 errorMsg.textContent = "";
@@ -1192,6 +1317,7 @@ dailyGoals.addEventListener("click", () => {
             goals.splice(goals.findIndex((a) => a.id == DelBtn.dataset.id), 1);
             const delTaskArray = document.querySelectorAll(`[data-id="${DelBtn.dataset.id}"]`);
             delTaskArray[0].remove();
+            addGoalsLocalStorage();
         })
 
 
