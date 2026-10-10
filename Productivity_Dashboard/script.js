@@ -1052,13 +1052,13 @@ goalTable.classList.add("goalTable");
 //***************************** Daily Goals *****************************
 let goalsShown = false;
 function allotGoals() {
-    let tempChecked = document.querySelectorAll('input[name="goalChecker"]:checked');
+    let tempChecked = document.querySelectorAll('input[name="goalChecker"]:checked') || [];
     tempChecked = [...tempChecked].map((a) => Number(a.dataset.id));
     goals.forEach((a) => { if (tempChecked.includes(a.id)) { a.status = true } });
     goalsChecked = goals.filter((a) => a.status == true);
 
 
-    let tempNotChecked = document.querySelectorAll('input[name="goalChecker"]:not(:checked)');
+    let tempNotChecked = document.querySelectorAll('input[name="goalChecker"]:not(:checked)')||[];
     tempNotChecked = [...tempNotChecked].map((a) => Number(a.dataset.id));
     goals.forEach((a) => { if (tempNotChecked.includes(a.id)) { a.status = false } });
     goalsNotChecked = goals.filter((a) => a.status == false);

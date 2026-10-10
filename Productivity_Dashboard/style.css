@@ -51,7 +51,9 @@ body {
     border: 1px solid var(--asideColor);
     cursor: pointer;
 }
-
+.expenseTracker{
+    padding: 10px;
+}
 
 /* Main Content */
 .content {
@@ -262,6 +264,9 @@ body {
 }
 
 @media screen and (width<500px) {
+    .expenseTracker{
+        font-size: small;
+    }
     .Dialog{
         width: 300px;
         min-height: 460px;
@@ -328,7 +333,7 @@ body {
         /* font-size: small; */
         flex-wrap: wrap;
         gap: 30px;
-        justify-content: end;
+        justify-content: space-evenly;
     }
 
     .timeResetDiv {
