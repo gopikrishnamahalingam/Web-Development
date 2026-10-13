@@ -240,6 +240,7 @@ taskManager.addEventListener("click", () => {
     }
 
     //Functionalities
+    // Search by name and date *******************************
     const searchBox = document.createElement("input");
     searchBox.placeholder = "Search";
     const goTask = document.createElement("button");
@@ -268,7 +269,7 @@ taskManager.addEventListener("click", () => {
     goTask.addEventListener("click", () => { // In case if value is entered without a keyboard
         container.innerHTML = "";
         const searchValue = searchBox.value.trim();
-        const searchTasks = tasks.filter((a) => a.name.toLowerCase().includes(searchValue.toLowerCase()));
+        const searchTasks = tasks.filter((a) => a.name.toLowerCase().includes(searchValue.toLowerCase()) || a.date.toLowerCase().includes(searchValue.toLowerCase()));
 
         searchTasks.forEach((a) => {
             AddtoDOM(a);
@@ -276,7 +277,7 @@ taskManager.addEventListener("click", () => {
     })
     searchBox.addEventListener("keyup", (e) => { // In case if value is entered without a keyboard
         container.innerHTML = "";
-        const searchTasks = tasks.filter((a) => a.name.toLowerCase().includes(e.target.value.trim().toLowerCase()));
+        const searchTasks = tasks.filter((a) => a.name.toLowerCase().includes(e.target.value.trim().toLowerCase())|| a.date.toLowerCase().includes(e.target.value.trim().toLowerCase()));
 
         searchTasks.forEach((a) => {
             AddtoDOM(a);
@@ -703,7 +704,7 @@ sessionTracker.addEventListener("click", () => {
     goSessions.addEventListener("click", () => { // In case if value is entered without a keyboard
         container.innerHTML = "";
         const searchValue = searchBox.value.trim();
-        const searchSessions = sessions.filter((a) => a.name.toLowerCase().includes(searchValue.toLowerCase()));
+        const searchSessions = sessions.filter((a) => a.name.toLowerCase().includes(searchValue.toLowerCase())|| a.date.toLowerCase().includes(searchValue.toLowerCase()));
         // console.log("goTask");
 
         searchSessions.forEach((a) => {
@@ -712,7 +713,7 @@ sessionTracker.addEventListener("click", () => {
     })
     searchBox.addEventListener("keyup", (e) => {
         container.innerHTML = "";
-        const searchSessions = sessions.filter((a) => a.name.toLowerCase().includes(e.target.value.trim().toLowerCase()));
+        const searchSessions = sessions.filter((a) => a.name.toLowerCase().includes(e.target.value.trim().toLowerCase())|| a.date.toLowerCase().includes(e.target.value.trim().toLowerCase()));
 
         searchSessions.forEach((a) => {
             AddtoDOM(a);
